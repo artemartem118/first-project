@@ -1,0 +1,17 @@
+.post {
+    background-color: #51ff25;
+    display: grid;
+    grid-template-areas:
+            "img text"
+;
+    grid-template-rows: 1fr ;
+    grid-template-columns: 2fr  10fr;
+
+}
+.text {
+    grid-area: text;
+}
+img {
+    grid-area: img;
+    width: 60px;
+}
