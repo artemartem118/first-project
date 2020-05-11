@@ -1,0 +1,22 @@
+
+.dialogs_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs {
+    padding: 10px;
+}
+
+.massages {
+    padding: 10px;
+}
+
+.dialogs .active a {
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+    color: #fffa2d
+}

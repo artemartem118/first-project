@@ -5,17 +5,21 @@
 
     grid-template-areas:
             "header header header header"
-            " . nav content ."
-            ". nav posts ."
+            " . nav Profile ."
+            ". . Profile ."
 
 ;
     grid-template-rows: 60px max-content max-content;
     grid-template-columns: 2fr 3fr 10fr 2fr;
     gap: 15px;
-    background-color: darkgray;
+    padding-bottom: 20px;
 }
 
+.app-wrapper-content {
+    grid-area: Profile;
+    background-color: pink;
 
+}
 
 
 

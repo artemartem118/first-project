@@ -1,0 +1,19 @@
+
+.addPostsWrapper {
+    padding: 15px;
+}
+
+.text {
+    height: 50px;
+    padding-bottom: 10px;
+}
+
+.text textarea {
+    width: 99%;
+    height: 90%;
+    resize: none;
+}
+
+.btn {
+    text-align: end;
+}
