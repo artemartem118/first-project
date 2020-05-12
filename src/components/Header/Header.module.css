@@ -1,9 +1,15 @@
 .header {
     grid-area: header;
     background-color: plum;
+    display: flex;
 }
 
 .img {
     width: 60px;
     height: 60px;
+}
+
+.tect {
+    font-size: 25px;
+    padding: 10px;
 }

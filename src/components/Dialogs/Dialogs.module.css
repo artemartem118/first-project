@@ -1,22 +1,26 @@
 
 .dialogs_wrapper {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 3fr 10fr;
+    grid-template-rows: 1fr 130px;
+grid-template-areas:
+        'dialogs massages'
+        'dialogs sendmassage'
+;
+
 }
 
 .dialogs {
     padding: 10px;
+    grid-area: dialogs;
 }
 
 .massages {
-    padding: 10px;
+    grid-area: massages;
 }
 
-.dialogs .active a {
-    color: grey;
+.sendmassage {
+    grid-area: sendmassage;
 }
 
-a {
-    text-decoration: none;
-    color: #fffa2d
-}
+

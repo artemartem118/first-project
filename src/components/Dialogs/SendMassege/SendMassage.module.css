@@ -1,0 +1,11 @@
+.addMassageWrapper {
+    margin: 10px;
+}
+textarea {
+    width: 99%;
+    height: 90%;
+    resize: none;
+}
+.text {
+    height: 90px;
+}

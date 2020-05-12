@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Send.module.css"
+import classes from "./SendMassage.module.css"
 
-const Send = () => {
+const SendMassage = () => {
 
     let newPostElement = React.createRef();
 
@@ -10,7 +10,7 @@ const Send = () => {
     }
 
     return (
-        <div className={classes.addPostsWrapper}>
+        <div className={classes.addMassageWrapper}>
             <div  className={classes.text}>
                 <textarea ref={newPostElement}></textarea>
             </div>
@@ -20,4 +20,4 @@ const Send = () => {
         </div>
     );
 };
-export default Send;
+export default SendMassage;

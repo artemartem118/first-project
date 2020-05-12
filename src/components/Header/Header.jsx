@@ -4,7 +4,9 @@ import classes from './Header.module.css';
 const Header = () => {
     return (
         <header className={classes.header}>
-            <img className={classes.img} src='http://cdn2.s.kolorado.ru/products/1/15/153/153181/112_1_1_design.png'/>
+            <img className={classes.img} src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
+            <div className={classes.tect}>вне такта</div>
+
         </header>
     );
 }
