@@ -8,7 +8,8 @@ const Profile = (props) => {
     return (
         <div className={classes.profileWrapper}>
             <ProfileInfo/>
-            <Wall postsData={props.postsData} />
+            <Wall
+                store={props.store} />
         </div>
     );
 }

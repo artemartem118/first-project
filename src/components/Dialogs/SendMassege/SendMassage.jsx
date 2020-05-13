@@ -1,18 +1,26 @@
 import React from "react";
 import classes from "./SendMassage.module.css"
 
-const SendMassage = () => {
+const SendMassage = (props) => {
 
     let newPostElement = React.createRef();
 
+    const changeTypedMassage = () => {
+        const message = newPostElement.current.value;
+        props.store.updateTexteareaMessage(message);
+    }
+
     const onButtonClik = () => {
-        alert (newPostElement.current.value);
+        props.store.addNewMassage();
     }
 
     return (
         <div className={classes.addMassageWrapper}>
             <div  className={classes.text}>
-                <textarea ref={newPostElement}></textarea>
+                <textarea
+                    onChange={changeTypedMassage}
+                    ref={newPostElement}
+                    value={props.store.massageText}></textarea>
             </div>
             <div  className={classes.btn}>
                 <button onClick={ onButtonClik }>Add posts</button>

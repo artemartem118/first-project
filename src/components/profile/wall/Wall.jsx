@@ -4,20 +4,19 @@ import Post from "./Post/Post";
 import Send from "./Send/Send";
 
 
-
-
 const Wall = (props) => {
 
-    const postElement = props.postsData
+    const postsElement = props.store.getPosts
         .map(p => <Post massage={p.massage} counterLike={p.counterLike}/>);
 
 
     return (
         <div className={classes.posts}>
-            <Send />
-            {
-                postElement
-            }
+            <Send
+                store={props.store}/>
+
+            {postsElement}
+
         </div>
     );
 }

@@ -7,10 +7,10 @@ import SendMassage from "./SendMassege/SendMassage";
 
 const Dialogs = (props) => {
 
-    const dialogsElement = props.dialogsData
+    const dialogsElement = props.store.getDialogs
         .map(d => <DialogItem name={d.name} id={d.id}/>);
 
-    const massagesElement = props.massagesData
+    const massagesElement = props.store.getMessages
         .map(m => <Massage massage={m.massage}/>);
 
     return (
@@ -28,7 +28,8 @@ const Dialogs = (props) => {
                 }
             </div>
             <div className={classes.sendmassage}>
-                <SendMassage/>
+                <SendMassage
+                    store={props.store}/>
             </div>
 
         </div>

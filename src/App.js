@@ -9,20 +9,17 @@ import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
 
 function App(props) {
+    console.log(props);
     return (
         <div className='app-wrapper'>
             <Header/>
             <NavBar/>
             <div className='app-wrapper-content'>
                 <Route path='/Profile'
-                       render={() => <Profile
-                           postsData={props.state.ProfilePage.postsData}/>}/>
+                       render={() => <Profile store={props.store}/>}/>
 
                 <Route path='/Dialogs'
-                       render={() => <Dialogs
-
-                           massagesData={props.state.DialogsPage.massagesData}
-                           dialogsData={props.state.DialogsPage.dialogsData}/>}/>
+                       render={() => <Dialogs store={props.store}/>}/>
 
                 <Route path='/News' render={() => <News/>}/>
 
