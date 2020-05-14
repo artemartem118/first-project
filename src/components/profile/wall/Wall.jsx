@@ -5,8 +5,8 @@ import Send from "./Send/Send";
 
 
 const Wall = (props) => {
-
-    const postsElement = props.store.getPosts
+    const state = props.store.getState().profilePage;
+    const postsElement = state.postsData
         .map(p => <Post massage={p.massage} counterLike={p.counterLike}/>);
 
 

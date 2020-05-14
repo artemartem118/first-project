@@ -1,29 +1,29 @@
 import React from "react";
 import classes from "./SendMassage.module.css"
+import {addMassageActionCreator, updateTextareaMessageActionCreator} from "../../../redux/dialogsPage-reducer";
 
 const SendMassage = (props) => {
+    const state = props.store.getState().dialogsPage;
 
-    let newPostElement = React.createRef();
-
-    const changeTypedMassage = () => {
-        const message = newPostElement.current.value;
-        props.store.updateTexteareaMessage(message);
+    const changeTypedMassage = (event) => {
+        const message = event.target.value;
+        props.store.dispatch(updateTextareaMessageActionCreator(message));
     }
 
     const onButtonClik = () => {
-        props.store.addNewMassage();
+        props.store.dispatch(addMassageActionCreator());
     }
 
     return (
         <div className={classes.addMassageWrapper}>
-            <div  className={classes.text}>
+            <div className={classes.text}>
                 <textarea
+                    placeholder={'enter'}
                     onChange={changeTypedMassage}
-                    ref={newPostElement}
-                    value={props.store.massageText}></textarea>
+                    value={state.massageText}/>
             </div>
-            <div  className={classes.btn}>
-                <button onClick={ onButtonClik }>Add posts</button>
+            <div className={classes.btn}>
+                <button  onClick={onButtonClik}>Send message</button>
             </div>
         </div>
     );

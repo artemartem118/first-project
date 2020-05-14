@@ -9,7 +9,6 @@ import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
 
 function App(props) {
-    console.log(props);
     return (
         <div className='app-wrapper'>
             <Header/>

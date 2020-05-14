@@ -1,24 +1,26 @@
 import React from "react";
 import classes from "./Send.module.css"
+import {addPostActionCreator, updateTextareaPostActionCreator} from "../../../../redux/profilePage-reducer";
 
 const Send = (props) => {
 
-    let newPostElement = React.createRef();
-
+    const state = props.store.getState().profilePage;
 
     const onButtonClik = () => {
 
-        props.store.addPost();
+        props.store.dispatch(addPostActionCreator());
     }
-    const onPostChange = () => {
-        let writePostText = newPostElement.current.value;
-        props.store.updateTexteareaText(writePostText);
+    const onPostChange = (event) => {
+        let writePostText = event.target.value;
+        props.store.dispatch(updateTextareaPostActionCreator(writePostText));
 
     }
     return (
         <div className={classes.addPostsWrapper}>
             <div  className={classes.text}>
-                <textarea ref={newPostElement} onChange={onPostChange}  value={props.store.newPostText} />
+                <textarea
+                    placeholder={'enter'}
+                    onChange={onPostChange}  value={state.newPostText} />
             </div>
             <div  className={classes.btn}>
                 <button onClick={ onButtonClik }>Add posts</button>

@@ -6,11 +6,11 @@ import SendMassage from "./SendMassege/SendMassage";
 
 
 const Dialogs = (props) => {
-
-    const dialogsElement = props.store.getDialogs
+    let state = props.store.getState().dialogsPage
+    const dialogsElement = state.dialogsData
         .map(d => <DialogItem name={d.name} id={d.id}/>);
 
-    const massagesElement = props.store.getMessages
+    const massagesElement = state.massagesData
         .map(m => <Massage massage={m.massage}/>);
 
     return (

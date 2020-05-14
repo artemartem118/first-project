@@ -1,11 +1,15 @@
+import profilePageReducer from "./profilePage-reducer";
+import sideBarReducer from "./sidebar-reducer";
+import dialogsPageReducer from "./dialogsPage-reducer";
+
 const store = {
 
-    rerenderEntireTree() {
+    _callSubscriber() {
         console.log('23');
     },
 
     subscribe(obserser) {
-        this.rerenderEntireTree = obserser;
+        this._callSubscriber = obserser;
     },
 
     _state: {
@@ -31,19 +35,23 @@ const store = {
                 {id: 3, name: 'Germiona'},
             ],
             massageText: '',
-
-        }
+        },
+        sideBar: {}
     },
 
-    get newPostText() {
+    get getState() {
+        return this._state;
+    },
+
+    get postText() {
         return this._state.ProfilePage.newPostText;
     },
-    get massageText() {
-        return this._state.DialogsPage.massageText;
-    },
-
     get getPosts() {
         return this._state.ProfilePage.postsData;
+    },
+
+    get massageText() {
+        return this._state.DialogsPage.massageText;
     },
     get getMessages() {
         return this._state.DialogsPage.massagesData;
@@ -51,39 +59,14 @@ const store = {
     get getDialogs() {
         return this._state.DialogsPage.dialogsData;
     },
+    dispatch(action) {
 
-    addPost() {
+        this._state.ProfilePage = profilePageReducer(this._state.ProfilePage, action);
+        this._state.DialogsPage = dialogsPageReducer(this._state.DialogsPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
 
-        let newPost = {
-            id: 5,
-            massage: this._state.ProfilePage.newPostText,
-            counterLike: 0,
-        };
+        this._callSubscriber(this);
 
-        this._state.ProfilePage.postsData.push(newPost);
-        this._state.ProfilePage.newPostText = '';
-        store.rerenderEntireTree();
-    },
 
-    updateTexteareaText(Posttext) {
-        this._state.ProfilePage.newPostText = Posttext;
-        store.rerenderEntireTree();
-    },
-
-    addNewMassage() {
-        const newMassage = {
-            id: 6,
-            massage: this._state.DialogsPage.massageText,
-        }
-        this._state.DialogsPage.massagesData.push(newMassage);
-        this._state.DialogsPage.massageText = '';
-        store.rerenderEntireTree();
-    },
-
-    updateTexteareaMessage(message) {
-        this._state.DialogsPage.massageText = message;
-        store.rerenderEntireTree();
     },
 }
-
-export default store;
