@@ -13,8 +13,8 @@ const DialogItem = (props) => {
                 <NavLink className={classes.link}
                          to={`/dialogs/${props.id}`}> {props.name} </NavLink>
             </div>
-            <div className={classes.lastmassage}>
-                last massage
+            <div className={classes.lastmessage}>
+                last message
             </div>
         </div>
     );

@@ -5,17 +5,22 @@ import Send from "./Send/Send";
 
 
 const Wall = (props) => {
-    const state = props.store.getState().profilePage;
-    const postsElement = state.postsData
-        .map(p => <Post massage={p.massage} counterLike={p.counterLike}/>);
+
+    const postsElement = props.profilePage.postsData
+        .map(p => <Post message={p.message} counterLike={p.counterLike}/>);
 
 
     return (
         <div className={classes.posts}>
             <Send
-                store={props.store}/>
+                addPost={props.addPost}
+                updateTextareaPost={props.updateTextareaPost}
+                profilePage={props.profilePage}
+            />
 
-            {postsElement}
+            <div>
+                {postsElement}
+            </div>
 
         </div>
     );

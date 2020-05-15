@@ -4,8 +4,8 @@
     grid-template-columns: 3fr 10fr;
     grid-template-rows: 1fr 130px;
 grid-template-areas:
-        'dialogs massages'
-        'dialogs sendmassage'
+        'dialogs messages'
+        'dialogs sendmessage'
 ;
 
 }
@@ -15,12 +15,12 @@ grid-template-areas:
     grid-area: dialogs;
 }
 
-.massages {
-    grid-area: massages;
+.messages {
+    grid-area: messages;
 }
 
-.sendmassage {
-    grid-area: sendmassage;
+.sendmessage {
+    grid-area: sendmessage;
 }
 
 

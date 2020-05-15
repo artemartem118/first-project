@@ -1,17 +1,17 @@
 import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogsItem/DialogItem";
-import Massage from "./Massage/Massage";
-import SendMassage from "./SendMassege/SendMassage";
+import Message from "./Message/Message";
+import SendMessage from "./SendMessege/SendMessage";
 
 
 const Dialogs = (props) => {
-    let state = props.store.getState().dialogsPage
-    const dialogsElement = state.dialogsData
+
+    const dialogsElement = props.dialogsPage.dialogsData
         .map(d => <DialogItem name={d.name} id={d.id}/>);
 
-    const massagesElement = state.massagesData
-        .map(m => <Massage massage={m.massage}/>);
+    const messagesElement = props.dialogsPage.messagesData
+        .map(m => <Message message={m.message}/>);
 
     return (
         <div className={classes.dialogs_wrapper}>
@@ -22,14 +22,16 @@ const Dialogs = (props) => {
                 }
             </div>
 
-            <div className={classes.massages}>
+            <div className={classes.messages}>
                 {
-                    massagesElement
+                    messagesElement
                 }
             </div>
-            <div className={classes.sendmassage}>
-                <SendMassage
-                    store={props.store}/>
+            <div className={classes.sendmessage}>
+                <SendMessage
+                    updateTextareaMessage={props.updateTextareaMessage}
+                    addMessage={props.addMessage}
+                    dialogsPage={props.dialogsPage}/>
             </div>
 
         </div>

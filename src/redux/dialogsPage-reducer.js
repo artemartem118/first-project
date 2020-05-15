@@ -1,43 +1,50 @@
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_TEXTAREA_MESSAGE = 'UPDATE-TEXTAREA-MESSAGE';
+
 let initialState = {
-    massagesData: [
-        {id: 1, massage: 'AVADA KEDAVRA'},
-        {id: 2, massage: 'EXPILARMUS'},
-        {id: 3, massage: 'FLEPENDO'},
-        {id: 4, massage: 'VINGARDIUM LEVIOSSA'},
-        {id: 5, massage: 'bukla'},
+    messagesData: [
+        {id: 1, message: 'AVADA KEDAVRA'},
+        {id: 2, message: 'EXPILARMUS'},
+        {id: 3, message: 'FLEPENDO'},
+        {id: 4, message: 'VINGARDIUM LEVIOSSA'},
+        {id: 5, message: 'bukla'},
     ],
     dialogsData: [
         {id: 1, name: 'Albus'},
         {id: 2, name: 'Harry'},
         {id: 3, name: 'Germiona'},
     ],
-    massageText: '',
+    messageText: '',
 };
 
+
 const dialogsPageReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case ADD_MESSAGE:
-            const newMassage = {
+        case ADD_MESSAGE: {
+            const newMessage = {
                 id: 6,
-                massage: state.massageText,
+                message: state.messageText,
             }
-
-            state.massagesData.push(newMassage);
-            state.massageText = '';
-            return state;
-        case UPDATE_TEXTAREA_MESSAGE:
-            state.massageText = action.messageText;
-            return state;
+            debugger
+            return {
+                ...state,
+                messagesData: [...state.messagesData, newMessage],
+                messageText: "",
+            };
+        }
+        case UPDATE_TEXTAREA_MESSAGE: {
+            return {
+                ...state,
+                messageText: action.messageText
+            };
+        }
         default:
             return state;
     }
 };
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_TEXTAREA_MESSAGE = 'UPDATE-TEXTAREA-MESSAGE';
 
-export const addMassageActionCreator = () => ({
+export const addMessageActionCreator = () => ({
     type: ADD_MESSAGE
 });
 

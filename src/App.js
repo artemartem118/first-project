@@ -3,10 +3,10 @@ import './App.css';
 import Header from "./components/Header/Header";
 import NavBar from "./components/Navbar/NavBar";
 import Profile from "./components/profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
     return (
@@ -15,10 +15,10 @@ function App(props) {
             <NavBar/>
             <div className='app-wrapper-content'>
                 <Route path='/Profile'
-                       render={() => <Profile store={props.store}/>}/>
+                       render={() => <Profile/>}/>
 
                 <Route path='/Dialogs'
-                       render={() => <Dialogs store={props.store}/>}/>
+                       render={() => <DialogsContainer/>}/>
 
                 <Route path='/News' render={() => <News/>}/>
 
