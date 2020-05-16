@@ -1,1 +1,30 @@
+.wrapperUsers {
+    min-height: 500px;
+}
 
+.wrapperUser {
+
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-areas: 'wrapperAVA wrapperDiscription';
+    min-height: 150px;
+    margin: 10px;
+}
+
+.wrapperAVA {
+    padding: 5px;
+    background-color: darkgray;
+    grid-area: wrapperAVA;
+}
+
+.wrapperDiscription {
+    padding: 5px;
+    background-color: darkgray;
+    grid-area: wrapperDiscription;
+}
+img {
+    height: 100px;
+    width: 100px;
+}

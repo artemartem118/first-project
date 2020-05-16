@@ -5,8 +5,8 @@ import NavBar from "./components/Navbar/NavBar";
 import Profile from "./components/profile/Profile";
 import {Route} from "react-router-dom";
 import News from "./components/News/News";
-import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
 
 function App(props) {
     return (
@@ -22,7 +22,7 @@ function App(props) {
 
                 <Route path='/News' render={() => <News/>}/>
 
-                <Route path='/Friends' render={() => <Friends/>}/>
+                <Route path='/Friends' render={() => <FriendsContainer/>}/>
 
             </div>
         </div>
