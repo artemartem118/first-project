@@ -28,3 +28,12 @@ img {
     height: 100px;
     width: 100px;
 }
+
+span {
+    display: inline-block;
+    padding: 2px;
+    cursor: pointer;
+}
+.activePage {
+    color: #fff64b
+}
