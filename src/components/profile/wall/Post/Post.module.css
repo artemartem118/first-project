@@ -30,7 +30,7 @@
     grid-area: like;
 }
 
-img {
+.img {
     grid-area: img;
     width: 60px;
 }

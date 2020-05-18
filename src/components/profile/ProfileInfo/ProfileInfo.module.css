@@ -1,8 +1,7 @@
-.profileWrapper {
+.profileInfoWrapper {
     grid-area: profileInfoWrapper;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
     padding: 15px;
+
 }
 
 .picture img {

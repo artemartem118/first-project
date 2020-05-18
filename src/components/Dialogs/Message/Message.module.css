@@ -1,13 +1,7 @@
 
 .messageMY {
     padding: 10px;
+    margin: 0 0 10px 10px;
     border: solid 2px cornsilk;
-    margin: 5px;
 }
 
-.messageYOUR {
-    padding: 10px;
-    border: solid 2px cornsilk;
-    margin: 5px;
-    text-align: end;
-}
