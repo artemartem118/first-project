@@ -24,7 +24,7 @@ const friendsPageReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.id) {
-                        return { ...user, follow: true };
+                        return { ...user, followed: true };
                     }
                     return user;
                 })
@@ -35,7 +35,7 @@ const friendsPageReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.id) {
-                        return { ...user, follow: false }
+                        return { ...user, followed: false }
                     }
                     return user;
                 })

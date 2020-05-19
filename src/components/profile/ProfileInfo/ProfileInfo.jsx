@@ -12,9 +12,9 @@ const ProfileInfo = (props) => {
                 <img src={props.userProfile.photos.large} alt="ava"/>
             </div>
             <div className={classes.info}>
-                <div>Tom Riddle</div>
-                <div> love snake</div>
-                <div><b>i will win in this war!11!!</b></div>
+                <div>{props.userProfile.fullName}</div>
+                <div>{props.userProfile.aboutMe}</div>
+                <div><b>{props.userProfile.lookingForAJobDescription}</b></div>
             </div>
         </div>
     );

@@ -8,28 +8,28 @@ import {
     setUsers, toggleIsFetching,
     unfollow
 } from "../../redux/friendsPage-reducer";
-import * as axios from "axios";
 import Preloader from "../Common/Preloader/Preloader";
+import {usersAPI} from "../../API/api";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get('https://social-network.samuraijs.com/api/1.0/users?count=10')
-            .then(response => {
+        usersAPI.getUsers(this.props.pageSize)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
             });
     }
 
     onPageClick = (pageNum) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNum)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNum}&count=${this.props.pageSize}`)
-            .then(response => {
+        usersAPI.getUsersForNewPage(this.props.pageSize, pageNum)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             });
     }
 

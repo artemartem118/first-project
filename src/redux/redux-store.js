@@ -1,14 +1,16 @@
 import {combineReducers, createStore} from "redux";
-import profilePageReducer, {addPostActionCreator} from "./profilePage-reducer";
+import profilePageReducer from "./profilePage-reducer";
 import sideBarReducer from "./sidebar-reducer";
 import dialogsPageReducer from "./dialogsPage-reducer";
 import friendsPageReducer from "./friendsPage-reducer";
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
     profilePage: profilePageReducer,
     dialogsPage: dialogsPageReducer,
     sideBar: sideBarReducer,
-    friendsPage: friendsPageReducer
+    friendsPage: friendsPageReducer,
+    auth: authReducer,
 });
 
 

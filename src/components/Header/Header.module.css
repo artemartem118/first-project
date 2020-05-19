@@ -1,6 +1,7 @@
 .header {
     grid-area: header;
     background-color: plum;
+    position: relative;
     display: flex;
 }
 
@@ -12,4 +13,10 @@
 .tect {
     font-size: 25px;
     padding: 10px;
+}
+
+.login  {
+    position: absolute;
+    right: 10px;
+    top: 15px;
 }
