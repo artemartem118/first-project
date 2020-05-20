@@ -1,7 +1,8 @@
 import React from "react";
 import Dialogs from "./Dialogs";
-import {addMessageActionCreator, updateTextareaMessageActionCreator} from "../../redux/dialogsPage-reducer";
+import {addMessage, updateTextareaMessage} from "../../redux/dialogsPage-reducer";
 import {connect} from "react-redux";
+import {withAutnRedirect} from "../HOC/WithAuthRedirect";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,18 +10,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateTextareaMessage: (value) => {
-            debugger
-            dispatch(updateTextareaMessageActionCreator(value));
-        },
-        addMessage: () => {
-            dispatch(addMessageActionCreator());
-        }
-    }
-}
 
-const DialogsContainer = connect(mapStateToProps ,mapDispatchToProps)(Dialogs);
+
+const DialogsContainer = withAutnRedirect(connect(mapStateToProps ,{updateTextareaMessage, addMessage})(Dialogs));
 
 export default DialogsContainer;

@@ -1,3 +1,5 @@
+import {authAPI} from "../API/api";
+
 const SET_USER_DATE = 'SET_USER_DATE';
 
 let initialState = {
@@ -23,10 +25,21 @@ const authReducer = (state = initialState, action) => {
 };
 
 
-export const setUserData = (data) => ({
+export const setUserDataAccess = (data) => ({
     type: SET_USER_DATE,
     data
 });
+export const setUserData = () => {
+    return (dicpatch) => {
+        authAPI.setProfileData()
+            .then(response => {
+            if(response.data.resultCode === 0) {
+                dicpatch(setUserDataAccess(response.data.data))
+            }
+        })
+    }
+}
+
 
 
 export default authReducer;

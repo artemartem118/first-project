@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogsItem/DialogItem";
 import Message from "./Message/Message";
 import SendMessage from "./SendMessege/SendMessage";
+import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
@@ -12,6 +13,7 @@ const Dialogs = (props) => {
 
     const messagesElement = props.dialogsPage.messagesData
         .map(m => <Message message={m.message}/>);
+
 
     return (
         <div className={classes.dialogs_wrapper}>

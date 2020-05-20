@@ -44,11 +44,11 @@ const dialogsPageReducer = (state = initialState, action) => {
 };
 
 
-export const addMessageActionCreator = () => ({
+export const addMessage = () => ({
     type: ADD_MESSAGE
 });
 
-export const updateTextareaMessageActionCreator = messageText => ({
+export const updateTextareaMessage = messageText => ({
     type: UPDATE_TEXTAREA_MESSAGE,
     messageText: messageText
 });
