@@ -2,6 +2,7 @@ import React from "react";
 import Wall from "./Wall";
 import {addPostActionCreator, updateTextareaPostActionCreator} from "../../../redux/profilePage-reducer";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const WallContainer = connect(mapStateToProps, mapDispatchToProps)(Wall);
 
-export default WallContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps)
+)(Wall);

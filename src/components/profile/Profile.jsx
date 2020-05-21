@@ -6,7 +6,7 @@ import WallContainer from "./wall/WallContainer";
 const Profile = (props) => {
     return (
         <div className={classes.profileWrapper}>
-            <ProfileInfo userProfile={props.userProfile} />
+            <ProfileInfo userProfile={props.userProfile} status={props.status} updateStatusUser={props.updateStatusUser} />
             <WallContainer />
         </div>
     );
