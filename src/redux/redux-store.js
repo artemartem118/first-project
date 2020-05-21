@@ -5,6 +5,7 @@ import dialogsPageReducer from "./dialogsPage-reducer";
 import friendsPageReducer from "./friendsPage-reducer";
 import authReducer from "./auth-reducer";
 import thunk from "redux-thunk";
+import {reducer as formReducer} from "redux-form"
 
 let reducers = combineReducers({
     profilePage: profilePageReducer,
@@ -12,6 +13,7 @@ let reducers = combineReducers({
     sideBar: sideBarReducer,
     friendsPage: friendsPageReducer,
     auth: authReducer,
+    form: formReducer
 });
 
 
