@@ -1,5 +1,13 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {loginUser} from "../../redux/auth-reducer";
+import {Input} from "../Common/Forms/Forms";
+import {required} from "../../Utils/validators/validators";
+import {Redirect} from "react-router-dom";
+import styles from "../Common/Forms/Forms.module.css"
+
+
 
 const LoginForm = (props) => {
 
@@ -7,14 +15,22 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={ props.handleSubmit }>
             <div>
-                <Field name={"login"} component={"input"} placeholder={"login"}/>
+                <Field name={"email"}
+                       validate={[required]}
+                       component={Input} placeholder={"email"}/>
             </div>
             <div>
-                <Field name={"password"} component={"input"} placeholder={"password"}/>
+                <Field name={"password"}
+                       type={"password"}
+                       validate={[required]}
+                       component={Input} placeholder={"password"}/>
             </div>
             <div>
-                <Field name={"rememberMe"} component={"input"} type={"checkbox"}/>remember me
+                <Field name={"rememberMe"} component={Input} type={"checkbox"}/>remember me
             </div>
+            {
+                <div className={styles.formLoginError}>{props.error}</div>
+            }
             <div>
                 <button>login</button>
             </div>
@@ -27,8 +43,12 @@ const ReduxLoginForm = reduxForm({ form: "login" })(LoginForm)
 
 const Login = (props) => {
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = ({email, password, rememberMe}) => {
+        props.loginUser(email, password, rememberMe);
+    }
+
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
     }
 
     return (
@@ -40,6 +60,8 @@ const Login = (props) => {
         </>
     );
 }
+const mapStateToProps = state => ({
+    isAuth: state.auth.isAuth
+})
 
-
-export default Login;
+export default connect(mapStateToProps, {loginUser})(Login);

@@ -14,7 +14,6 @@ const Wall = (props) => {
         <div className={classes.posts}>
             <Send
                 addPost={props.addPost}
-                updateTextareaPost={props.updateTextareaPost}
                 profilePage={props.profilePage}
             />
 

@@ -1,7 +1,7 @@
 .addMessageWrapper {
     margin: 10px;
 }
-textarea {
+.text textarea {
     width: 99%;
     height: 90%;
     resize: none;

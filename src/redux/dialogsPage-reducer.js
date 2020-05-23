@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_TEXTAREA_MESSAGE = 'UPDATE-TEXTAREA-MESSAGE';
 
 let initialState = {
     messagesData: [
@@ -14,7 +13,6 @@ let initialState = {
         {id: 2, name: 'Harry'},
         {id: 3, name: 'Germiona'},
     ],
-    messageText: '',
 };
 
 
@@ -23,19 +21,11 @@ const dialogsPageReducer = (state = initialState, action) => {
         case ADD_MESSAGE: {
             const newMessage = {
                 id: 6,
-                message: state.messageText,
+                message: action.textMess,
             }
-            debugger
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                messageText: "",
-            };
-        }
-        case UPDATE_TEXTAREA_MESSAGE: {
-            return {
-                ...state,
-                messageText: action.messageText
             };
         }
         default:
@@ -44,13 +34,10 @@ const dialogsPageReducer = (state = initialState, action) => {
 };
 
 
-export const addMessage = () => ({
-    type: ADD_MESSAGE
+export const addMessage = (textMess) => ({
+    type: ADD_MESSAGE,
+    textMess
 });
 
-export const updateTextareaMessage = messageText => ({
-    type: UPDATE_TEXTAREA_MESSAGE,
-    messageText: messageText
-});
 
 export default dialogsPageReducer;

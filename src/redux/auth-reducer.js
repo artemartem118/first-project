@@ -1,11 +1,11 @@
 import {authAPI} from "../API/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATE = 'SET_USER_DATE';
-
 let initialState = {
     id: null,
-    email: null,
     login: null,
+    email: null,
     isAuth: false,
 };
 
@@ -15,8 +15,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATE: {
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload,
             }
         }
         default:
@@ -25,21 +24,42 @@ const authReducer = (state = initialState, action) => {
 };
 
 
-export const setUserDataAccess = (data) => ({
+export const setUserDataAccess = (id, login, email, isAuth) => ({
     type: SET_USER_DATE,
-    data
+    payload: {id, login, email, isAuth}
 });
-export const setUserData = () => {
-    return (dicpatch) => {
-        authAPI.setProfileData()
-            .then(response => {
-            if(response.data.resultCode === 0) {
-                dicpatch(setUserDataAccess(response.data.data))
+
+
+export const setUserData = () => (dispatch) => {
+   return authAPI.setProfileData()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                const {id, login, email} = response.data.data;
+                dispatch(setUserDataAccess(id, login, email, true))
             }
         })
-    }
 }
 
+export const loginUser = (email, password, rememberMe) => dispatch => {
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setUserData())
+            } else {
+                const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+                dispatch(stopSubmit("login", {_error: message}))
+            }
+        })
+}
+
+export const logoutUser = () => (dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setUserDataAccess(null, null, null, false));
+            }
+        })
+}
 
 
 export default authReducer;

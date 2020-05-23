@@ -6,7 +6,7 @@ import {
     unfollow
 } from "../../redux/friendsPage-reducer";
 import Preloader from "../Common/Preloader/Preloader";
-import {withAutnRedirect} from "../HOC/WithAuthRedirect";
+import {withAuthRedirect} from "../HOC/WithAuthRedirect";
 import {compose} from "redux";
 
 class FriendsContainer extends React.Component {
@@ -48,6 +48,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    withAutnRedirect,
     connect(mapStateToProps, { getUsers, follow, unfollow })
 )(FriendsContainer);

@@ -1,8 +1,8 @@
 import React from "react";
 import Wall from "./Wall";
-import {addPostActionCreator, updateTextareaPostActionCreator} from "../../../redux/profilePage-reducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {addPost} from "../../../redux/profilePage-reducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -10,18 +10,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateTextareaPost: (writePostText) => {
-            dispatch(updateTextareaPostActionCreator(writePostText));
-        },
-        addPost: () => {
-            dispatch(addPostActionCreator());
-        },
-    }
-}
-
-
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, {addPost})
 )(Wall);

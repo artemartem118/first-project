@@ -3,7 +3,6 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogsItem/DialogItem";
 import Message from "./Message/Message";
 import SendMessage from "./SendMessege/SendMessage";
-import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
@@ -31,9 +30,7 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.sendmessage}>
                 <SendMessage
-                    updateTextareaMessage={props.updateTextareaMessage}
-                    addMessage={props.addMessage}
-                    dialogsPage={props.dialogsPage}/>
+                    addMessage={props.addMessage}/>
             </div>
 
         </div>
