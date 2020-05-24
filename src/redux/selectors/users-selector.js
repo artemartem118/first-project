@@ -1,0 +1,6 @@
+export const getUsersFromState = state => (state.friendsPage.users)
+export const getPageSizeFromState = state => (state.friendsPage.pageSize)
+export const getTotalUsersFromState = state => (state.friendsPage.totalUsers)
+export const getCurrentPageFromState = state => (state.friendsPage.currentPage)
+export const getIsFetchingFromState = state => (state.friendsPage.isFetching)
+export const getFollowingInProgressFromState = state => (state.friendsPage.followingInProgress)
