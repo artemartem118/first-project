@@ -8,12 +8,11 @@ import {Redirect} from "react-router-dom";
 import styles from "../Common/Forms/Forms.module.css"
 
 
-
 const LoginForm = (props) => {
 
 
     return (
-        <form onSubmit={ props.handleSubmit }>
+        <form onSubmit={props.handleSubmit}>
             <div>
                 <Field name={"email"}
                        validate={[required]}
@@ -38,7 +37,7 @@ const LoginForm = (props) => {
     );
 }
 
-const ReduxLoginForm = reduxForm({ form: "login" })(LoginForm)
+const ReduxLoginForm = reduxForm({form: "login"})(LoginForm)
 
 
 const Login = (props) => {
@@ -48,14 +47,14 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
-        return <Redirect to={"/profile"} />
+        return <Redirect to={"/profile"}/>
     }
 
     return (
         <>
             <div><h2>Login</h2></div>
             <div>
-                <ReduxLoginForm onSubmit={ onSubmit } />
+                <ReduxLoginForm onSubmit={onSubmit}/>
             </div>
         </>
     );

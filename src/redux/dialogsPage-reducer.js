@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     messagesData: [
@@ -34,10 +34,7 @@ const dialogsPageReducer = (state = initialState, action) => {
 };
 
 
-export const addMessage = (textMess) => ({
-    type: ADD_MESSAGE,
-    textMess
-});
+export const addMessage = (textMess) => ({type: ADD_MESSAGE, textMess});
 
 
 export default dialogsPageReducer;
