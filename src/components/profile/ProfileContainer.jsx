@@ -2,16 +2,17 @@ import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import {getStatusUser, getUser, updateStatusUser} from "../../redux/profilePage-reducer";
+import {getStatusUser, getUser, savePhoto, updateStatusUser} from "../../redux/profilePage-reducer";
 import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
-    componentDidMount() {
+
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.userId;
-            if(!userId) {
+            if (!userId) {
                 this.props.history.push("/login");
             }
         }
@@ -19,9 +20,23 @@ class ProfileContainer extends React.Component {
         this.props.getStatusUser(userId);
     }
 
+    componentDidMount() {
+        this.refreshProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile();
+        }
+    }
+
     render() {
-        return <Profile {...this.props} updateStatusUser={this.props.updateStatusUser}
-                        userProfile={this.props.userProfile} status={this.props.status}/>
+        return <Profile {...this.props}
+                        ifOwner={!this.props.match.params.userId}
+                        updateStatusUser={this.props.updateStatusUser}
+                        userProfile={this.props.userProfile}
+                        savePhoto={this.props.savePhoto}
+                        status={this.props.status}/>
     }
 }
 
@@ -35,7 +50,7 @@ const mapStateToProps = state => ({
 
 
 export default compose(
-    connect(mapStateToProps, {getUser, getStatusUser, updateStatusUser}),
+    connect(mapStateToProps, {getUser, getStatusUser, updateStatusUser, savePhoto}),
     withRouter
 )(ProfileContainer);
 

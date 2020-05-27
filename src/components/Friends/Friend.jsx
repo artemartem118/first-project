@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Friends.module.css';
 import {NavLink} from "react-router-dom";
+import withPhoto from "./../../assets/unnamed.jpg"
 
 
 const Friend = ({user, ...props}) => {
@@ -9,9 +10,7 @@ const Friend = ({user, ...props}) => {
             <div className={classes.wrapperAVA}>
                 <div className={classes.ava}>
                     <NavLink to={`/profile/${user.id}`}>
-                        <img className={classes.img} src={user.photos.small
-                            ? user.photos.small
-                            : 'https://yt3.ggpht.com/a/AATXAJxNPBlXaWrUE7XWuir5pH_y6-NhYaqVj57YUQ=s900-c-k-c0xffffffff-no-rj-mo'}/>
+                        <img className={classes.img} src={user.photos.small || withPhoto }/>
                     </NavLink>
                     <div>{user.name}</div>
                 </div>

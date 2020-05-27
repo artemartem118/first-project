@@ -5,7 +5,6 @@ import {
     follow, getUsers,
     unfollow
 } from "../../redux/friendsPage-reducer";
-import Preloader from "../Common/Preloader/Preloader";
 import {compose} from "redux";
 import {
     getCurrentPageFromState, getFollowingInProgressFromState, getIsFetchingFromState,
@@ -27,13 +26,14 @@ class FriendsContainer extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <Preloader/> : <Friends
+                { <Friends
                     totalUsers={this.props.totalUsers}
                     pageSize={this.props.pageSize}
                     users={this.props.users}
                     currentPage={this.props.currentPage}
                     unfollow={this.props.unfollow}
                     follow={this.props.follow}
+                    isFetching={this.props.isFetching}
                     onPageClick={this.onPageClick}
                     followingInProgress={this.props.followingInProgress}/>}
             </>

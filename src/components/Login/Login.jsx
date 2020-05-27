@@ -30,6 +30,10 @@ const LoginForm = (props) => {
             {
                 <div className={styles.formLoginError}>{props.error}</div>
             }
+            {props.captchaUrl && <img src={props.captchaUrl} />}
+            {props.captchaUrl &&  <Field name={"captcha"}
+                                         validate={[required]}
+                                         component={Input} placeholder={"captcha"}/>}
             <div>
                 <button>login</button>
             </div>
@@ -42,8 +46,8 @@ const ReduxLoginForm = reduxForm({form: "login"})(LoginForm)
 
 const Login = (props) => {
 
-    const onSubmit = ({email, password, rememberMe}) => {
-        props.loginUser(email, password, rememberMe);
+    const onSubmit = ({email, password, rememberMe, captcha}) => {
+        props.loginUser(email, password, rememberMe, captcha);
     }
 
     if (props.isAuth) {
@@ -54,13 +58,14 @@ const Login = (props) => {
         <>
             <div><h2>Login</h2></div>
             <div>
-                <ReduxLoginForm onSubmit={onSubmit}/>
+                <ReduxLoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
             </div>
         </>
     );
 }
 const mapStateToProps = state => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
 })
 
 export default connect(mapStateToProps, {loginUser})(Login);

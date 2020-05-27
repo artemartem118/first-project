@@ -1,18 +1,26 @@
 import React from "react";
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
-import dontknow from "../../../assets/DSC07473.jpg"
+import withPhoto from "./../../../assets/unnamed.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+
     if (!props.userProfile) {
         return <Preloader/>
     }
+
+  const  changeMainPhoto = (e) => {
+        if(e.target.files.length) props.savePhoto(e.target.files[0])
+    }
+
+
     return (
         <div className={classes.profileInfoWrapper}>
             <div className={classes.picture}>
-                <img src={props.userProfile.photos.large ? props.userProfile.photos.large : dontknow} alt="ava"/>
+                <img src={props.userProfile.photos.large || withPhoto} alt="ava"/>
             </div>
+            <div>{props.ifOwner && <input type={"file"} onClick={changeMainPhoto}/>}</div>
             <div className={classes.info}>
 
                 <div>{props.userProfile.fullName}</div>

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import NavBar from "./components/Navbar/NavBar";
 import {Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import FriendsContainer from "./components/Friends/FriendsContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -12,6 +11,9 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/App-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
+
+const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
+
 
 class App extends React.Component {
     componentDidMount() {
@@ -24,6 +26,7 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
+                    <Suspense fallback={<div>Загрузка...</div>}>
                     <Route path='/Profile/:userId?'
                            render={() => <ProfileContainer/>}/>
 
@@ -34,7 +37,7 @@ class App extends React.Component {
 
                     <Route path='/Friends' render={() => <FriendsContainer/>}/>
                     <Route path='/Login' render={() => <Login/>}/>
-
+                    </Suspense>
                 </div>
             </div>
         );
