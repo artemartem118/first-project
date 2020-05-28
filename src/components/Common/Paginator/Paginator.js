@@ -1,5 +1,6 @@
 import classes from "./Paginator.module.css";
 import React, {useState} from "react";
+import cn from "classnames"
 
 const Paginator = ({portionSize = 5, ...props}) => {
 
@@ -22,7 +23,9 @@ const Paginator = ({portionSize = 5, ...props}) => {
             pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map(p => {
-                return <span className={props.currentPage === p && classes.activePage} onClick={() => {
+                return <span key={p} className={cn(  {
+                    [classes.activePage]:props.currentPage === p
+                })} onClick={() => {
                     props.onPageClick(p)
                 }}>{p}</span>
             })

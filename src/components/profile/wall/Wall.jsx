@@ -6,7 +6,7 @@ import Send from "./Send/Send";
 
 const Wall = (props) => {
     const postsElement = props.profilePage.postsData
-        .map(p => <Post message={p.message} counterLike={p.counterLike}/>);
+        .map(p => <Post key={p.id} message={p.message} counterLike={p.counterLike}/>);
 
 
     return (

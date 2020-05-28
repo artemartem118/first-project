@@ -3,7 +3,6 @@ import classes from './Post.module.css';
 
 
 const Post = React.memo((props) => {
-    console.log('ae')
     return (
         <div className={classes.post}>
             <div className={classes.text}>

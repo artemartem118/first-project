@@ -39,6 +39,9 @@ export const profileAPI = {
             }
         })
     },
+    saveProfile(formData) {
+        return instance.put('profile', formData)
+    }
 
 }
 

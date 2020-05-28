@@ -50,6 +50,7 @@ const Login = (props) => {
         props.loginUser(email, password, rememberMe, captcha);
     }
 
+
     if (props.isAuth) {
         return <Redirect to={"/profile"}/>
     }

@@ -8,10 +8,10 @@ import SendMessage from "./SendMessege/SendMessage";
 const Dialogs = (props) => {
 
     const dialogsElement = props.dialogsPage.dialogsData
-        .map(d => <DialogItem name={d.name} id={d.id}/>);
+        .map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>);
 
     const messagesElement = props.dialogsPage.messagesData
-        .map(m => <Message message={m.message}/>);
+        .map(m => <Message key={m.id} message={m.message}/>);
 
 
     return (

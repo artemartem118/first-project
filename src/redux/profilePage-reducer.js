@@ -1,4 +1,6 @@
 import {profileAPI} from "../API/api";
+import {stopSubmit} from "redux-form";
+import {getCaptcha} from "./auth-reducer";
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
@@ -44,7 +46,7 @@ const profilePageReducer = (state = initialState, action) => {
         case SET_PHOTO: {
             return {
                 ...state,
-                userProfile:{...state.userProfile, photos: action.photos}
+                userProfile: {...state.userProfile, photos: action.photos}
             };
         }
         default:
@@ -86,8 +88,19 @@ export const updateStatusUser = status => {
 
 export const savePhoto = photo => async dispatch => {
     const response = await profileAPI.savePhoto(photo);
-    if (response.data.resultCode ===0) {
+    if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+}
+export const saveProfile = formData => async (dispatch, getState) => {
+    const id = getState().auth.id;
+    const response = await profileAPI.saveProfile(formData);
+    if (response.data.resultCode === 0) {
+        dispatch(getUser(id));
+    } else {
+        const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        dispatch(stopSubmit("profileDataForm", {_error: message}));
+        return Promise.reject(response.data.messages[0]);
     }
 }
 

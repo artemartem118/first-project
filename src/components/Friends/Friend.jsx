@@ -29,9 +29,7 @@ const Friend = ({user, ...props}) => {
                 }
             </div>
             <div className={classes.wrapperDiscription}>
-                <div className={classes.country}>{'user.localization.country'}</div>
-                <div className={classes.city}>{'user.localization.city'}</div>
-                <div className={classes.status}>{user.status}</div>
+                <div className={classes.status}><b>Status:</b> {user.status}</div>
             </div>
         </div>
     )
