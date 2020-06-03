@@ -1,8 +1,14 @@
-import React from "react";
-import classes from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import React from 'react'
+import classes from './Header.module.css'
+import {NavLink} from 'react-router-dom'
+import {InitialStateAuth} from "../../redux/auth-reducer";
 
-const Header = (props) => {
+type Props = {
+    auth: InitialStateAuth
+    logout: () => void
+}
+
+const Header: React.FC<Props> = (props) => {
     return (
         <header className={classes.header}>
             <img className={classes.img} src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
@@ -14,6 +20,14 @@ const Header = (props) => {
                     : <NavLink to={'/login'}>login</NavLink>}
             </div>
         </header>
-    );
+    )
 }
-export default Header;
+export default Header
+
+
+
+
+
+
+
+

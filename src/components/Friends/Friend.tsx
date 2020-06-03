@@ -1,10 +1,17 @@
-import React from "react";
-import classes from './Friends.module.css';
-import {NavLink} from "react-router-dom";
-import withPhoto from "./../../assets/unnamed.jpg"
+import React from 'react'
+import classes from './Friends.module.css'
+import {NavLink} from 'react-router-dom'
+import withPhoto from './../../assets/unnamed.jpg'
+import {UserType} from '../../types/types'
 
+type Props = {
+    user: UserType
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
 
-const Friend = ({user, ...props}) => {
+const Friend = ({user, ...props}: Props) => {
     return (
         <div className={classes.wrapperUser}>
             <div className={classes.wrapperAVA}>
@@ -34,25 +41,4 @@ const Friend = ({user, ...props}) => {
         </div>
     )
 }
-export default Friend;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Friend

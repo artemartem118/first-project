@@ -3,9 +3,17 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogsItem/DialogItem";
 import Message from "./Message/Message";
 import SendMessage from "./SendMessege/SendMessage";
+import {InitialStateDialogs} from "../../redux/dialogsPage-reducer";
 
 
-const Dialogs = (props) => {
+
+
+type Props = {
+    dialogsPage: InitialStateDialogs
+    addMessage: () => void
+}
+
+const Dialogs = (props:Props) => {
 
     const dialogsElement = props.dialogsPage.dialogsData
         .map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>);

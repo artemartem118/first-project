@@ -1,30 +1,21 @@
 .dialog {
-    padding: 13px;
+    padding: 5px;
     border: 1px solid #ff2638 ;
     display: grid;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 3fr;
     grid-template-areas:
-    'pic dlink'
-    'pic lastmessage'
+    'pic wrapperLastLink'
 ;
+    justify-items: center;
+
 }
-
-
-
-
-
 
 .link {
     color: grey;
 }
 .dlink {
-    grid-area: dlink;
-    vertical-align: center;
-}
 
-.lastmessage {
-    grid-area: lastmessage;
+    vertical-align: center;
 }
 
 .pic {
@@ -36,4 +27,9 @@
     border-radius: 50%;
     height: 100px;
     width: 100px;
+}
+
+.wrapperLastLink {
+    grid-area: wrapperLastLink;
+    align-self: center;
 }

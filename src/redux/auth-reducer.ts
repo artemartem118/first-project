@@ -4,7 +4,7 @@ import {stopSubmit} from "redux-form"
 const SET_USER_DATE = 'auth/SET_USER_DATE'
 const SET_CAPTCHA = 'auth/SET_CAPTCHA'
 
-type InitialStateType = {
+export type InitialStateAuth = {
     id: null | number
     login: null | string
     email: null | string
@@ -13,7 +13,7 @@ type InitialStateType = {
 }
 
 
-let initialState: InitialStateType = {
+let initialState: InitialStateAuth = {
     id: null,
     login: null,
     email: null,

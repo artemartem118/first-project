@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import classes from './ProfileInfo.module.css';
-import Preloader from "../../Common/Preloader/Preloader";
-import withPhoto from "./../../../assets/unnamed.jpg"
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import ProfileDataForm from "./ProfileDataForm";
+import React, {useState} from 'react'
+import classes from './ProfileInfo.module.css'
+import Preloader from '../../Common/Preloader/Preloader'
+import withPhoto from './../../../assets/unnamed.jpg'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks'
+import ProfileDataForm from './ProfileDataForm'
 
 const ProfileInfo = (props) => {
 
@@ -34,7 +34,7 @@ const ProfileInfo = (props) => {
             <div className={classes.info}>
 
 
-                <b>Status:</b><ProfileStatusWithHooks status={props.status} updateStatusUser={props.updateStatusUser}/>
+                <b>Status: </b><ProfileStatusWithHooks ifOwner={props.ifOwner} status={props.status} updateStatusUser={props.updateStatusUser}/>
 
                 {editMode ? <ProfileDataForm initialValues={props.userProfile} onSubmit={onSubmit}
                                              profile={props.userProfile}/> :
@@ -64,25 +64,5 @@ const ProfileData = ({profile, ...props}) => {
 const Contact = ({title, value}) => {
     return <div className={classes.contact}><b>{title}</b>{value}</div>
 }
-// {
-//     "aboutMe": null,
-//     "contacts": {
-//     "facebook": null,
-//         "website": null,
-//         "vk": null,
-//         "twitter": null,
-//         "instagram": null,
-//         "youtube": null,
-//         "github": null,
-//         "mainLink": null
-// },
-//     "lookingForAJob": false,
-//     "lookingForAJobDescription": null,
-//     "fullName": "artemartem",
-//     "userId": 8227,
-//     "photos": {
-//     "small": "https://social-network.samuraijs.com/activecontent/images/users/8227/user-small.jpg?v=6",
-//         "large": "https://social-network.samuraijs.com/activecontent/images/users/8227/user.jpg?v=6"
-// }
-// }
+
 export default ProfileInfo;

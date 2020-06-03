@@ -24,9 +24,9 @@ let initialState = {
         {id: 3, name: 'Germiona'},
     ] as Array<DialogsDataType>,
 }
-type initialStateType = typeof initialState;
+export type InitialStateDialogs = typeof initialState;
 
-const dialogsPageReducer = (state = initialState, action: any): initialStateType => {
+const dialogsPageReducer = (state = initialState, action: any): InitialStateDialogs => {
     switch (action.type) {
         case ADD_MESSAGE: {
             return {
