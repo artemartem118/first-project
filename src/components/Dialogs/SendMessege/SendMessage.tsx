@@ -1,53 +1,54 @@
 import React from 'react'
 import classes from './SendMessage.module.css'
-import {Field, reduxForm} from 'redux-form'
-import {Textarea} from '../../Common/Forms/Forms'
-import {maxLength, required} from '../../../Utils/validators/validators'
+import {useForm} from 'react-hook-form'
 
 type PropsSendMessage = {
-    handleSubmit: () => void
-    onSubmit: () => void
+    onSubmit: ({newMessage}: FormData, e: any) => void
+}
+
+type FormData = {
+    newMessage: string
+}
+const SendMessage: React.FC<PropsSendMessage> = ({onSubmit}) => {
+
+    const {register, handleSubmit, errors} = useForm<FormData>()
+
+    const required = 'You can\'t send an empty message'
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={classes.text}>
+                <div>
+                    <textarea name='newMessage' placeholder={'New message'}
+                              ref={register({required, maxLength: {value: 30, message: 'Exceeded the limit'}})}/>
+                </div>
+
+            </div>
+            <div className={classes.btn}>
+                <button>Send message</button>
+                {errors.newMessage && <span>{errors.newMessage.message}</span>}
+            </div>
+        </form>
+    )
 }
 
 type PropsSend = {
     addMessage: (newMessage: string) => void
 }
 
-type FormData = {
-    newMessage: string
-}
-
-const maxLength30 = maxLength(30)
-
-const SendMessage: React.FC<PropsSendMessage> = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div className={classes.text}>
-                <Field component={Textarea} name={"newMessage"}  validate={[required, maxLength30]} placeholder={'enter'}/>
-
-            </div>
-            <div className={classes.btn}>
-                <button >Send message</button>
-            </div>
-        </form>
-    )
-}
-{/* @ts-ignore*/}
-const SendMessageForm = reduxForm({form: "sendMessage"})(SendMessage);
-
 const Send: React.FC<PropsSend> = (props) => {
 
-    const onButtonClik = ({newMessage}: FormData) => {
+    const {reset} = useForm()
 
-        props.addMessage(newMessage);
-
+    const onButtonClik = ({newMessage}: FormData, e: any) => {
+        e.target.reset()
+        props.addMessage(newMessage)
     }
 
     return (
         <div className={classes.addMessageWrapper}>
-    {/* @ts-ignore*/}
-            <SendMessageForm onSubmit={onButtonClik} />
+            <SendMessage onSubmit={onButtonClik}/>
         </div>
-    );
-};
+    )
+}
 export default Send

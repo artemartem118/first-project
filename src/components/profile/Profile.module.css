@@ -1,7 +1,6 @@
 .profileWrapper {
     display: grid;
-    grid-template-rows: 1fr ;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
-    grid-template-areas:
-    'profileInfoWrapper  posts';
+    grid-template-areas: 'profileInfoWrapper  posts';
 }

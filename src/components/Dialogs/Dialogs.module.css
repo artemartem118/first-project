@@ -4,10 +4,7 @@
     display: grid;
     grid-template-columns: 3fr 10fr;
     grid-template-rows: 1fr 130px;
-grid-template-areas:
-        'dialogs messages'
-        'dialogs sendmessage'
-;
+    grid-template-areas: 'dialogs messages' 'dialogs sendmessage';
 
 }
 

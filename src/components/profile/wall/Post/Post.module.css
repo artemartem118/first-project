@@ -1,10 +1,9 @@
 .post {
     background-color: #51ff25;
     display: grid;
-    grid-template-areas:
-            "img text";
-    grid-template-rows: 1fr ;
-    grid-template-columns: 2fr  10fr;
+    grid-template-areas: "img text";
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 10fr;
     margin: 15px;
     padding: 10px;
 
@@ -13,11 +12,9 @@
 .text {
     grid-area: text;
     display: grid;
-    grid-template-areas:
-            "massage massage"
-            ". like";
+    grid-template-areas: "massage massage" ". like";
     grid-template-rows: 1fr 20px;
-    grid-template-columns: 1fr  50px;
+    grid-template-columns: 1fr 50px;
 
 }
 
@@ -26,6 +23,7 @@
     grid-area: massage;
 
 }
+
 .like {
     grid-area: like;
 }

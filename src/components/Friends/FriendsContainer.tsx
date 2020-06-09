@@ -1,19 +1,18 @@
-import React from "react";
-import {connect} from "react-redux";
-import Friends from "./Friends";
+import React from 'react'
+import {connect} from 'react-redux'
+import Friends from './Friends'
+import {follow, getUsers, unfollow} from '../../redux/friendsPage-reducer'
+import {compose} from 'redux'
 import {
-    follow, getUsers,
-    unfollow
-} from "../../redux/friendsPage-reducer";
-import {compose} from "redux";
-import {
-    getCurrentPageFromState, getFollowingInProgressFromState, getIsFetchingFromState,
+    getCurrentPageFromState,
+    getFollowingInProgressFromState,
+    getIsFetchingFromState,
     getPageSizeFromState,
     getTotalUsersFromState,
     getUsersFromState
-} from "../../redux/selectors/users-selector";
-import {UserType} from "../../types/types";
-import {AppState} from "../../redux/redux-store";
+} from '../../redux/selectors/users-selector'
+import {UserType} from '../../types/types'
+import {AppState} from '../../redux/redux-store'
 
 type MapStateProps = {
     users: Array<UserType>
@@ -35,17 +34,17 @@ type Props = MapStateProps & MapDispatchProps
 class FriendsContainer extends React.Component<Props> {
 
     componentDidMount() {
-        this.props.getUsers(this.props.pageSize,this.props.currentPage);
+        this.props.getUsers(this.props.pageSize, this.props.currentPage)
     }
 
     onPageClick = (pageNum: number) => {
-        this.props.getUsers(this.props.pageSize, pageNum);
+        this.props.getUsers(this.props.pageSize, pageNum)
     }
 
     render() {
         return (
             <>
-                { <Friends
+                {<Friends
                     totalUsers={this.props.totalUsers}
                     pageSize={this.props.pageSize}
                     users={this.props.users}
@@ -56,7 +55,7 @@ class FriendsContainer extends React.Component<Props> {
                     onPageClick={this.onPageClick}
                     followingInProgress={this.props.followingInProgress}/>}
             </>
-        );
+        )
     }
 }
 
@@ -72,5 +71,5 @@ const mapStateToProps = (state: AppState): MapStateProps => {
 }
 
 export default compose(
-    connect<MapStateProps, MapDispatchProps, null, AppState>(mapStateToProps, { getUsers, follow, unfollow })
-)(FriendsContainer);
+    connect<MapStateProps, MapDispatchProps, null, AppState>(mapStateToProps, {getUsers, follow, unfollow})
+)(FriendsContainer)

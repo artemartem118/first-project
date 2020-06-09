@@ -25,10 +25,10 @@ const Friends: React.FC<Props> = ({totalUsers, pageSize, currentPage, onPageClic
                        onPageClick={onPageClick}/>
             {isFetching ? <Preloader/> :
                 users.map(user => <Friend unfollow={unfollow}
-                                                follow={follow}
-                                                followingInProgress={followingInProgress}
-                                                user={user}
-                                                key={user.id}/>)
+                                          follow={follow}
+                                          followingInProgress={followingInProgress}
+                                          user={user}
+                                          key={user.id}/>)
             }
         </div>
     )

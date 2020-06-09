@@ -1,11 +1,9 @@
-import React from "react";
-import classes from './Dialogs.module.css';
-import DialogItem from "./DialogsItem/DialogItem";
-import Message from "./Message/Message";
-import SendMessage from "./SendMessege/SendMessage";
-import {InitialStateDialogs} from "../../redux/dialogsPage-reducer";
-
-
+import React from 'react'
+import classes from './Dialogs.module.css'
+import DialogItem from './DialogsItem/DialogItem'
+import Message from './Message/Message'
+import SendMessage from './SendMessege/SendMessage'
+import {InitialStateDialogs} from '../../redux/dialogsPage-reducer'
 
 
 type Props = {
@@ -13,13 +11,13 @@ type Props = {
     addMessage: () => void
 }
 
-const Dialogs = (props:Props) => {
+const Dialogs = (props: Props) => {
 
     const dialogsElement = props.dialogsPage.dialogsData
-        .map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>);
+        .map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
 
     const messagesElement = props.dialogsPage.messagesData
-        .map(m => <Message key={m.id} message={m.message}/>);
+        .map(m => <Message key={m.id} message={m.message}/>)
 
 
     return (
@@ -42,6 +40,6 @@ const Dialogs = (props:Props) => {
             </div>
 
         </div>
-    );
-};
-export default Dialogs;
+    )
+}
+export default Dialogs

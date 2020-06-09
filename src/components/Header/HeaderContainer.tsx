@@ -24,7 +24,7 @@ class HeaderContainer extends React.Component<Props> {
 
 const mapStateToProps = (state: AppState): MapStateProps => {
     return {
-        auth: state.auth,
+        auth: state.auth
     }
 }
 

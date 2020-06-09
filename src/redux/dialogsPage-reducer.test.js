@@ -1,5 +1,5 @@
-import React from 'react';
-import dialogsPageReducer, {addMessage} from "./dialogsPage-reducer";
+import React from 'react'
+import dialogsPageReducer, {addMessage} from './dialogsPage-reducer'
 
 
 let state = {
@@ -8,14 +8,14 @@ let state = {
         {id: 2, message: 'EXPILARMUS'},
         {id: 3, message: 'FLEPENDO'},
         {id: 4, message: 'VINGARDIUM LEVIOSSA'},
-        {id: 5, message: 'bukla'},
+        {id: 5, message: 'bukla'}
     ]
-};
+}
 
 
 test('added new message', () => {
-    const action = addMessage("test message")
+    const action = addMessage('test message')
     const newState = dialogsPageReducer(state, action)
 
-    expect(newState.messagesData.length).toBe(6);
-});
+    expect(newState.messagesData.length).toBe(6)
+})

@@ -17,7 +17,7 @@ const Friend = ({user, ...props}: Props) => {
             <div className={classes.wrapperAVA}>
                 <div className={classes.ava}>
                     <NavLink to={`/profile/${user.id}`}>
-                        <img className={classes.img} src={user.photos.small || withPhoto }/>
+                        <img className={classes.img} src={user.photos.small || withPhoto}/>
                     </NavLink>
                     <div>{user.name}</div>
                 </div>

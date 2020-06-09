@@ -8,12 +8,14 @@
     width: 200px;
     height: 200px;
 }
+
 .picture {
 }
 
 .info {
     padding: 10px;
 }
+
 .info > div {
     padding-bottom: 8px;
 }

@@ -1,18 +1,18 @@
-import React, {Suspense} from 'react';
-import './App.css';
-import NavBar from "./components/Navbar/NavBar";
-import {Redirect, Route, Switch, withRouter} from "react-router-dom";
-import News from "./components/News/News";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import ProfileContainer from "./components/profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
-import {connect} from "react-redux";
-import {compose} from "redux";
-import {initializeApp} from "./redux/App-reducer";
-import Preloader from "./components/Common/Preloader/Preloader";
+import React, {Suspense} from 'react'
+import './App.css'
+import NavBar from './components/Navbar/NavBar'
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
+import News from './components/News/News'
+import DialogsContainer from './components/Dialogs/DialogsContainer'
+import ProfileContainer from './components/profile/ProfileContainer'
+import HeaderContainer from './components/Header/HeaderContainer'
+import Login from './components/Login/Login'
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import {initializeApp} from './redux/App-reducer'
+import Preloader from './components/Common/Preloader/Preloader'
 
-const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
+const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'))
 
 
 class App extends React.Component {
@@ -39,12 +39,12 @@ class App extends React.Component {
 
                             <Route path='/Friends' render={() => <FriendsContainer/>}/>
                             <Route path='/Login' render={() => <Login/>}/>
-                            <Redirect form={"/"} to={"/profile"}/>
+                            <Redirect form={'/'} to={'/profile'}/>
                         </Switch>
                     </Suspense>
                 </div>
             </div>
-        );
+        )
     }
 }
 
@@ -56,4 +56,4 @@ const mapStateToProps = state => ({
 export default compose(
     connect(mapStateToProps, {initializeApp}),
     withRouter
-)(App);
+)(App)

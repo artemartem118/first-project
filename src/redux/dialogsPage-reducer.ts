@@ -15,36 +15,37 @@ let initialState = {
         {id: 2, message: 'EXPILARMUS'},
         {id: 3, message: 'FLEPENDO'},
         {id: 4, message: 'VINGARDIUM LEVIOSSA'},
-        {id: 5, message: 'bukla'},
+        {id: 5, message: 'bukla'}
     ] as Array<MessagesDataType>,
 
     dialogsData: [
         {id: 1, name: 'Albus'},
         {id: 2, name: 'Harry'},
-        {id: 3, name: 'Germiona'},
-    ] as Array<DialogsDataType>,
+        {id: 3, name: 'Germiona'}
+    ] as Array<DialogsDataType>
 }
+
 export type InitialStateDialogs = typeof initialState;
 
-const dialogsPageReducer = (state = initialState, action: any): InitialStateDialogs => {
+const dialogsPageReducer = (state = initialState, action: Actions): InitialStateDialogs => {
     switch (action.type) {
         case ADD_MESSAGE: {
             return {
                 ...state,
-                messagesData: [...state.messagesData, {id: 6, message: action.textMess}],
-            };
+                messagesData: [...state.messagesData, {id: 6, message: action.textMess}]
+            }
         }
         default:
-            return state;
+            return state
     }
 }
+
+type Actions = AddMessageType
 
 type AddMessageType = {
     type: typeof ADD_MESSAGE
     textMess: string
 }
-
 export const addMessage = (textMess: string): AddMessageType => ({type: ADD_MESSAGE, textMess})
-
 
 export default dialogsPageReducer

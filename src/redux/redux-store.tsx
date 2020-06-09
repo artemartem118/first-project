@@ -5,7 +5,6 @@ import dialogsPageReducer from './dialogsPage-reducer'
 import friendsPageReducer from './friendsPage-reducer'
 import authReducer from './auth-reducer'
 import thunk from 'redux-thunk'
-import {reducer as formReducer} from 'redux-form'
 import appReducer from './App-reducer'
 
 let rootReducer = combineReducers({
@@ -14,7 +13,6 @@ let rootReducer = combineReducers({
     sideBar: sideBarReducer,
     friendsPage: friendsPageReducer,
     auth: authReducer,
-    form: formReducer,
     app: appReducer
 })
 
@@ -26,7 +24,7 @@ const store = createStore(rootReducer, compose(
     applyMiddleware(
         thunk),
 // @ts-ignore
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 
 // @ts-ignore
