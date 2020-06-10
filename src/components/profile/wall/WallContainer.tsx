@@ -1,12 +1,12 @@
 import React from 'react'
 import Wall from './Wall'
 import {connect} from 'react-redux'
-import {compose} from 'redux'
-import {addPost, AddPostType, InitialStateProfileType} from '../../../redux/profilePage-reducer'
+import {addPost, AddPostType} from '../../../redux/profilePage-reducer'
 import {AppState} from '../../../redux/redux-store'
+import {PostDataType} from '../../../types/types'
 
 type MapStateToProps = {
-    profilePage: InitialStateProfileType
+    postsData: Array<PostDataType>
 }
 
 type MapDispatchToProps = {
@@ -15,10 +15,9 @@ type MapDispatchToProps = {
 
 const mapStateToProps = (state: AppState): MapStateToProps => {
     return {
-        profilePage: state.profilePage
+        postsData: state.profilePage.postsData
     }
 }
 
-export default compose(
-    connect<MapStateToProps, MapDispatchToProps, null, AppState>(mapStateToProps, {addPost})
-)(Wall)
+export default connect<MapStateToProps, MapDispatchToProps, null, AppState>(mapStateToProps, {addPost})
+(Wall)

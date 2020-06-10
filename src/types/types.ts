@@ -29,22 +29,6 @@ export type UserProfileType = {
     contacts: ContactsType
     photos: PhotosType
 }
-export type UserProfileForHookType = {
-    userId: number
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    'contacts.github': string
-    'contacts.vk': string
-    'contacts.facebook': string
-    'contacts.instagram': string
-    'contacts.twitter': string
-    'contacts.website': string
-    'contacts.youtube': string
-    'contacts.mainLink': string
-
-    photos: PhotosType
-}
 
 export type UserType = {
     id: number

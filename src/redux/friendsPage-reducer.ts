@@ -1,4 +1,4 @@
-import {friendsAPI} from '../API/api'
+import {friendsAPI, ResultCodes} from '../API/api'
 import {updateObjectInArray} from '../Utils/helpers/object-helper'
 import {UserType} from '../types/types'
 import {AppState} from './redux-store'
@@ -161,7 +161,7 @@ const _followUnfollowFlow = async (dispatch: DispatchType,
 
     const response = await apiMethod(userId)
 
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodes.success) {
         dispatch(actionCreator(userId))
     }
     dispatch(toggleFollowingInProgress(false, userId))

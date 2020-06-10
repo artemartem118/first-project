@@ -1,4 +1,4 @@
-import {authAPI, securityAPI} from '../API/api'
+import {authAPI, ResultCodeForCaptcha, ResultCodes, securityAPI} from '../API/api'
 import {ThunkAction} from 'redux-thunk'
 import {AppState} from './redux-store'
 
@@ -64,40 +64,35 @@ export const setCaptchaSuccess = (captchaUrl: string): SetCaptchaSuccessType => 
     payload: {captchaUrl}
 })
 
-
 export type ThunkActionAuthType = ThunkAction<Promise<void>, AppState, unknown, Actions>
 
 export const setUserData = (): ThunkActionAuthType => async (dispatch) => {
-    const response = await authAPI.setProfileData()
-    if (response.data.resultCode === 0) {
-        const {id, login, email} = response.data.data
+    const userData = await authAPI.setProfileData()
+    if (userData.resultCode === ResultCodes.success) {
+        const {id, login, email} = userData.data
         dispatch(setUserDataAccess(id, login, email, true))
     }
 }
 
 export const loginUser = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkActionAuthType => async (dispatch) => {
-    const response = await authAPI.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
+    const loginUserData = await authAPI.login(email, password, rememberMe, captcha)
+    if (loginUserData.resultCode === ResultCodes.success) {
         dispatch(setUserData())
-    } else {
-        if (response.data.resultCode === 10) {
-            dispatch(getCaptcha())
-        }
-        // const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+    } else if (loginUserData.resultCode === ResultCodeForCaptcha.captcha) {
+        dispatch(getCaptcha())
     }
 }
 
 export const logoutUser = (): ThunkActionAuthType => async (dispatch) => {
-    const response = await authAPI.logout()
-    if (response.data.resultCode === 0) {
+    const logoutUserData = await authAPI.logout()
+    if (logoutUserData.resultCode === ResultCodes.success) {
         dispatch(setUserDataAccess(null, null, null, false))
     }
 }
 
 export const getCaptcha = (): ThunkActionAuthType => async (dispatch) => {
-    const response = await securityAPI.getCaptcha()
-    const captchaUrl = response.data.url
-    dispatch(setCaptchaSuccess(captchaUrl))
+    const getCaptchaData = await securityAPI.getCaptcha()
+    dispatch(setCaptchaSuccess(getCaptchaData.url))
 }
 
 export default authReducer

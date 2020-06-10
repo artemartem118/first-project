@@ -24,8 +24,9 @@ const Profile: React.FC<Props> = (props) => {
                          savePhoto={props.savePhoto}
                          userProfile={props.userProfile}
                          status={props.status}
-                         updateStatusUser={props.updateStatusUser}/>
-            {/*@ts-ignore*/}
+                         updateStatusUser={props.updateStatusUser}
+            />
+    {/*@ts-ignore*/}
             <WallContainer/>
         </div>
     )

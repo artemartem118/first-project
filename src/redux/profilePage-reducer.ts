@@ -1,4 +1,4 @@
-import {profileAPI} from '../API/api'
+import {profileAPI, ResultCodes} from '../API/api'
 import {PhotosType, PostDataType, UserProfileType} from '../types/types'
 import {ThunkAction} from 'redux-thunk'
 import {AppState} from './redux-store'
@@ -84,42 +84,39 @@ export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({
 
 export const getUser = (userId: number): ThunkActionProfileType => {
     return async (dispatch) => {
-        const response = await profileAPI.getProfile(userId)
-        dispatch(setUserProfile(response.data))
+        const getUserData = await profileAPI.getProfile(userId)
+        dispatch(setUserProfile(getUserData))
     }
 }
 
 export const getStatusUser = (userId: number): ThunkActionProfileType => {
     return async (dispatch) => {
-        const response = await profileAPI.getStatus(userId)
-        dispatch(setUserStatus(response.data))
+        const getStatusUserData = await profileAPI.getStatus(userId)
+        dispatch(setUserStatus(getStatusUserData))
     }
 }
 
 export const updateStatusUser = (status: string): ThunkActionProfileType => {
     return async (dispatch) => {
-        const response = await profileAPI.updateStatus(status)
-        if (response.data.resultCode === 0) {
+        const updateStatusUserData = await profileAPI.updateStatus(status)
+        if (updateStatusUserData.resultCode === ResultCodes.success) {
             dispatch(setUserStatus(status))
         }
     }
 }
 
 export const savePhoto = (photo: File): ThunkActionProfileType => async (dispatch) => {
-    const response = await profileAPI.savePhoto(photo)
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos))
+    const savePhotoData = await profileAPI.savePhoto(photo)
+    if (savePhotoData.resultCode === ResultCodes.success) {
+        dispatch(savePhotoSuccess(savePhotoData.data.photos))
     }
 }
 
 export const saveProfile = (userProfile: UserProfileType): ThunkActionProfileType => async (dispatch, getState) => {
     const id = getState().auth.id
-    const response = await profileAPI.saveProfile(userProfile)
-    if (response.data.resultCode === 0) {
-        if (id)
-            dispatch(getUser(id))
-    } else {
-        const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+    const saveProfileData = await profileAPI.saveProfile(userProfile)
+    if (saveProfileData.resultCode === ResultCodes.success) {
+        if (id) dispatch(getUser(id))
     }
 }
 

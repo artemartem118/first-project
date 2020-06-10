@@ -1,23 +1,24 @@
 import React from 'react'
 import classes from './Wall.module.css'
 import Post from './Post/Post'
-import {AddPostType, InitialStateProfileType} from '../../../redux/profilePage-reducer'
+import {AddPostType} from '../../../redux/profilePage-reducer'
 import Send from './Send/Send'
+import {PostDataType} from '../../../types/types'
 
 type Props = {
-    profilePage: InitialStateProfileType
+    postsData: Array<PostDataType>
     addPost: (newPost: string) => AddPostType
 }
 
-const Wall: React.FC<Props> = (props) => {
+const Wall: React.FC<Props> = ({postsData, addPost}) => {
 
-    const postsElement = props.profilePage.postsData
+    const postsElement = postsData
         .map((p) => <Post counterLike={p.counterLike} message={p.message} key={p.id}/>)
 
     return (
         <div className={classes.posts}>
             <Send
-                addPost={props.addPost}
+                addPost={addPost}
             />
             <div>
                 {postsElement}

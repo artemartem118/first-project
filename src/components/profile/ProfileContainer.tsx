@@ -42,13 +42,16 @@ class ProfileContainer extends React.Component<AllProps> {
     }
 
     render() {
-        return <Profile {...this.props}
-                        ifOwner={!this.props.match.params.userId}
-                        updateStatusUser={this.props.updateStatusUser}
-                        userProfile={this.props.userProfile}
-                        savePhoto={this.props.savePhoto}
-                        saveProfile={this.props.saveProfile}
-                        status={this.props.status}/>
+        return (
+            <Profile {...this.props}
+                     ifOwner={!this.props.match.params.userId}
+                     updateStatusUser={this.props.updateStatusUser}
+                     userProfile={this.props.userProfile}
+                     savePhoto={this.props.savePhoto}
+                     saveProfile={this.props.saveProfile}
+                     status={this.props.status}
+            />
+        )
     }
 }
 
@@ -87,6 +90,3 @@ export default compose(
         saveProfile
     })
 )(ProfileContainer)
-
-
-

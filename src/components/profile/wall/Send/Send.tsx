@@ -26,7 +26,6 @@ const SendPost: React.FC<PropsSendPost> = ({onSubmit}) => {
     )
 }
 
-
 type PropsSend = {
     addPost: (newPost: string) => void
 }
