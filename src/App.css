@@ -13,6 +13,7 @@
 .app-wrapper-content {
     grid-area: Profile;
     background-color: pink;
+    min-height: 500px;
 
 }
 

@@ -4,6 +4,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import WallContainer from './wall/WallContainer'
 import {UserProfileType} from '../../types/types'
 import {ThunkActionProfileType} from '../../redux/profilePage-reducer'
+import Preloader from '../Common/Preloader/Preloader'
 
 
 type Props = {
@@ -17,6 +18,11 @@ type Props = {
 
 const Profile: React.FC<Props> = (props) => {
 
+
+    if (!props.userProfile) {
+        return <Preloader/>
+    }
+
     return (
         <div className={classes.profileWrapper}>
             <ProfileInfo saveProfile={props.saveProfile}
@@ -26,7 +32,7 @@ const Profile: React.FC<Props> = (props) => {
                          status={props.status}
                          updateStatusUser={props.updateStatusUser}
             />
-    {/*@ts-ignore*/}
+            {/*@ts-ignore*/}
             <WallContainer/>
         </div>
     )

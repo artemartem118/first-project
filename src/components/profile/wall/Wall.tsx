@@ -1,13 +1,12 @@
 import React from 'react'
 import classes from './Wall.module.css'
 import Post from './Post/Post'
-import {AddPostType} from '../../../redux/profilePage-reducer'
 import Send from './Send/Send'
 import {PostDataType} from '../../../types/types'
 
 type Props = {
     postsData: Array<PostDataType>
-    addPost: (newPost: string) => AddPostType
+    addPost: (newPost: string) => void
 }
 
 const Wall: React.FC<Props> = ({postsData, addPost}) => {

@@ -1,12 +1,25 @@
 import React from 'react'
-import preloader from '../../../assets/7677edd5a44b10130b8824ca020ba60b.gif'
+import styles from './Preloader.module.css'
 
 type props = {}
 const Preloader = (props: props) => {
 
     return (
-        <div>
-            <img src={preloader}/>
+        <div className={styles.wrapperPreloader}>
+            <div className={styles.ldsSpinner}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     )
 }

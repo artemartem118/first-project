@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './Send.module.css'
 import {useForm} from 'react-hook-form'
+import styles from '../../../Login/Login.module.css'
 
 type PropsSendPost = {
     onSubmit: (data: LoginFormValues, e: any) => void
@@ -15,12 +16,12 @@ const SendPost: React.FC<PropsSendPost> = ({onSubmit}) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={classes.text}>
-                <textarea name='messageText' placeholder={'Full name'}
+                <textarea name='messageText' placeholder={'New post'}
                           ref={register({required, maxLength: {value: 20, message: 'Exceeded the limit'}})}/>
-                {errors.messageText && <p>{errors.messageText.message}</p>}
+                {errors.messageText && <div className={styles.error}>{errors.messageText.message}</div>}
             </div>
             <div className={classes.btn}>
-                <button>Add posts</button>
+                <button>Add post</button>
             </div>
         </form>
     )

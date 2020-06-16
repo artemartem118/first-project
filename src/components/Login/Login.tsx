@@ -4,6 +4,7 @@ import {loginUser} from '../../redux/auth-reducer'
 import {Redirect} from 'react-router-dom'
 import {AppState} from '../../redux/redux-store'
 import {useForm} from 'react-hook-form'
+import styles from './Login.module.css'
 
 type Props = {
     captchaUrl: string | null
@@ -18,17 +19,19 @@ const LoginForm: React.FC<Props> = ({captchaUrl, onSubmit}) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            <div className={styles.wrapperInput}>
                 <input name='email' type='email' placeholder={'email'}
                        ref={register({required})}/>
+                {errors.email && <div className={styles.error}>{errors.email.message}</div>}
             </div>
-            {errors.email && <p>{errors.email.message}</p>}
-            <div>
+            <div className={styles.wrapperInput}>
                 <input name='password' type='password' placeholder={'password'} ref={register({required})}/>
+                {errors.password && <div className={styles.error}>{errors.password.message}</div>}
             </div>
-            {errors.password && <p>{errors.password.message}</p>}
             <div>
-                <input name='rememberMe' type='checkbox' ref={register}/>Remember me
+                <label>
+                    <input name='rememberMe' type='checkbox' ref={register}/> Remember me
+                </label>
             </div>
             {captchaUrl && <> <img src={captchaUrl}/><br/> <input name={'captcha'}
                                                                   placeholder={'captcha'} ref={register}/></>}
@@ -65,12 +68,14 @@ const Login: React.FC<MapStateProps & MapDispatchProps> = (props) => {
     }
 
     return (
-        <>
-            <div><h2>Login</h2></div>
-            <div>
-                <LoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
+        <div className={styles.outerWrapperLogin}>
+            <div className={styles.innerWrapperLogin}>
+                <div><h3>Login</h3></div>
+                <div>
+                    <LoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

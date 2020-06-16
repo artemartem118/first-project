@@ -77,7 +77,7 @@ interface IMe extends IResponse {
     }
 }
 
-interface ILogin  {
+interface ILogin {
     messages: Array<string | void>
     data: {
         userId: number

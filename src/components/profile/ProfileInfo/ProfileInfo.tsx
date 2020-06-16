@@ -5,12 +5,10 @@ import withPhoto from './../../../assets/unnamed.jpg'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import ProfileDataForm from './ProfileDataForm'
 import {UserProfileType} from '../../../types/types'
-import {ProfileActions, ThunkActionProfileType} from '../../../redux/profilePage-reducer'
-import {ThunkAction} from 'redux-thunk'
-import {AppState} from '../../../redux/redux-store'
+import {ThunkActionProfileType} from '../../../redux/profilePage-reducer'
 
 type Props = {
-    saveProfile: (userProfile: UserProfileType) => ThunkAction<Promise<void>, AppState, unknown, ProfileActions>
+    saveProfile: (userProfile: UserProfileType) => void
     userProfile: UserProfileType | null
     savePhoto: (photo: File) => ThunkActionProfileType
     status: string
@@ -32,14 +30,14 @@ const ProfileInfo: React.FC<Props> = (props) => {
             })
     }
 
-    if (!props.userProfile) {
-        return <Preloader/>
-    }
 
     const changeMainPhoto = (e: any) => {
         if (e.target.files.length) props.savePhoto(e.target.files[0])
     }
 
+    if (!props.userProfile) {
+        return <Preloader/>
+    }
     return (
         <div className={classes.profileInfoWrapper}>
             <div className={classes.picture}>

@@ -1,0 +1,16 @@
+.innerWrapperLogin {
+    height: 300px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    margin-left: 35px;
+}
+
+.wrapperInput {
+    margin-bottom: 5px;
+}
+
+.error {
+    color: red;
+    margin: 5px 0;
+}
