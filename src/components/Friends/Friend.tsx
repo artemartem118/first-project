@@ -24,11 +24,13 @@ const Friend = ({user, ...props}: Props) => {
                 {
                     user.followed
                         ? <button
+                            className={classes.btnFriend}
                             disabled={props.followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 props.unfollow(user.id)
                             }}>UNFOLLOW</button>
                         : <button
+                            className={classes.btnFriend}
                             disabled={props.followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 props.follow(user.id)

@@ -13,12 +13,12 @@ const Header: React.FC<Props> = (props) => {
         <header className={classes.header}>
             <img className={classes.img}
                  src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
-            <div className={classes.tect}>вне такта</div>
+            <div className={classes.text}>вне такта</div>
             <div className={classes.login}>
                 {props.auth.isAuth ?
 
                     <div>{props.auth.login}
-                        <button onClick={props.logout}>Log uot</button>
+                        <button className={classes.buttonHeader} onClick={props.logout}>Log uot</button>
                     </div>
                     : <NavLink to={'/login'}>login</NavLink>}
             </div>

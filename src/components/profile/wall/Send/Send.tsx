@@ -18,10 +18,10 @@ const SendPost: React.FC<PropsSendPost> = ({onSubmit}) => {
             <div className={classes.text}>
                 <textarea name='messageText' placeholder={'New post'}
                           ref={register({required, maxLength: {value: 20, message: 'Exceeded the limit'}})}/>
-                {errors.messageText && <div className={styles.error}>{errors.messageText.message}</div>}
+                {errors.messageText && <div className={classes.error}>{errors.messageText.message}</div>}
             </div>
-            <div className={classes.btn}>
-                <button>Add post</button>
+            <div className={classes.btnEnd}>
+                <button className={classes.btn}>Add post</button>
             </div>
         </form>
     )

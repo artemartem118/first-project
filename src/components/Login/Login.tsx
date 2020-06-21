@@ -20,23 +20,25 @@ const LoginForm: React.FC<Props> = ({captchaUrl, onSubmit}) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.wrapperInput}>
-                <input name='email' type='email' placeholder={'email'}
+                <input className={styles.inputLogin} name='email' type='email' placeholder={'email'}
                        ref={register({required})}/>
                 {errors.email && <div className={styles.error}>{errors.email.message}</div>}
             </div>
             <div className={styles.wrapperInput}>
-                <input name='password' type='password' placeholder={'password'} ref={register({required})}/>
+                <input className={styles.inputLogin} name='password' type='password' placeholder={'password'} ref={register({required})}/>
                 {errors.password && <div className={styles.error}>{errors.password.message}</div>}
             </div>
             <div>
-                <label>
-                    <input name='rememberMe' type='checkbox' ref={register}/> Remember me
+                <label className={styles.labelChack} htmlFor='loginCheck'>
+                    <input id='loginCheck' name='rememberMe' className={styles.checkbox} type='checkbox' ref={register}/>
+                    <span className={styles.fakeChack}></span>
+                    <span className={styles.textLabel}>Remember me</span>
                 </label>
             </div>
             {captchaUrl && <> <img src={captchaUrl}/><br/> <input name={'captcha'}
                                                                   placeholder={'captcha'} ref={register}/></>}
             <div>
-                <button>login</button>
+                <button className={styles.buttonLogin} >login</button>
             </div>
         </form>
     )

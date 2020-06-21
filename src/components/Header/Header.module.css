@@ -1,22 +1,28 @@
 .header {
     grid-area: header;
     background-color: plum;
-    position: relative;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-
 .img {
     width: 60px;
     height: 60px;
-}
 
-.tect {
+}
+.text {
     font-size: 25px;
     padding: 10px;
+    flex-basis: 69%;
 }
-
 .login {
-    position: absolute;
-    right: 10px;
-    top: 15px;
+
+}
+.buttonHeader {
+    margin: 0 0 0 10px;
+    padding: 5px 10px 5px 10px;
+    border: 0;
+}
+.buttonHeader:hover {
+    background: #f1f1f1;
 }

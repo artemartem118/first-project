@@ -23,8 +23,8 @@ const SendMessage: React.FC<PropsSendMessage> = ({onSubmit}) => {
                               ref={register({required, maxLength: {value: 30, message: 'Exceeded the limit'}})}/>
                 </div>
             </div>
-            <div className={classes.btn}>
-                <button>Send message</button>
+            <div className={classes.btnWrapper}>
+                <button className={classes.btn}>Send message</button>
                 {errors.newMessage && <span className={classes.error}>{errors.newMessage.message}</span>}
             </div>
         </form>
