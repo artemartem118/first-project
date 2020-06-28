@@ -1,7 +1,6 @@
 import React from 'react'
 import classes from './Send.module.css'
 import {useForm} from 'react-hook-form'
-import styles from '../../../Login/Login.module.css'
 
 type PropsSendPost = {
     onSubmit: (data: LoginFormValues, e: any) => void

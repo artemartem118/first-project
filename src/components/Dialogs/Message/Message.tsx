@@ -8,7 +8,7 @@ type Props = {
 const Message: React.FC<Props> = (props) => {
 
     return (
-        <div className={classes.messageMY}>{props.message}</div>
+        <div className={classes.message}>{props.message}</div>
     )
 }
 export default Message

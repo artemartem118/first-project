@@ -1,7 +1,8 @@
 import React from 'react'
-import classes from './Header.module.css'
+import classes from './Header.module.scss'
 import {NavLink} from 'react-router-dom'
 import {InitialStateAuth} from '../../redux/auth-reducer'
+import cn from 'classnames'
 
 type Props = {
     auth: InitialStateAuth
@@ -10,17 +11,24 @@ type Props = {
 
 const Header: React.FC<Props> = (props) => {
     return (
-        <header className={classes.header}>
-            <img className={classes.img}
-                 src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
-            <div className={classes.text}>вне такта</div>
-            <div className={classes.login}>
-                {props.auth.isAuth ?
-
-                    <div>{props.auth.login}
-                        <button className={classes.buttonHeader} onClick={props.logout}>Log uot</button>
+        <header className={cn(classes.header, 'wrapper')}>
+            <div className="container">
+                <div className={classes.headerWrapper}>
+                    <div className={classes.header__logo}>
+                        <img className={classes.img}
+                             src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
                     </div>
-                    : <NavLink to={'/login'}>login</NavLink>}
+                    <div className={classes.header__title}><span>Вне такта</span></div>
+                    <div className={cn(classes.header__login, classes.login)}>
+                        {props.auth.isAuth ?
+                            <div className={cn(classes.login__of, classes.of) }><span className={classes.of__name}>{props.auth.login}</span>
+                                <button className={classes.of__button} onClick={props.logout}>Log uot</button>
+                            </div>
+                            : <div className={classes.login__on}>
+                                <NavLink to={'/login'}>Login</NavLink>
+                            </div>}
+                    </div>
+                </div>
             </div>
         </header>
     )

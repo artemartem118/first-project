@@ -1,6 +1,7 @@
 .wrapperUsers {
     min-height: 500px;
 }
+
 .btnFriend {
     border: none;
     padding: 5px 15px 5px 15px;
@@ -8,9 +9,11 @@
     background: white;
 
 }
+
 .btnFriend:hover {
     background: #f1f1f1;
 }
+
 .wrapperUser {
 
     display: grid;

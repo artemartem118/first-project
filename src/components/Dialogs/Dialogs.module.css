@@ -1,23 +1,16 @@
-
-.dialogs_wrapper {
-    margin: 10px;
-    display: grid;
-    grid-template-columns: 3fr 10fr;
-    grid-template-rows: 1fr 130px;
-    grid-template-areas: 'dialogs messages' 'dialogs sendmessage';
-
-}
-
 .dialogs {
-    grid-area: dialogs;
+    display: flex;
+    flex-direction: row;
+    background-color: #FF4656;
 }
 
-.messages {
-    grid-area: messages;
+.dialogs__items {
+    flex-basis: 25%;
+    border: solid 2px #1F2326;
 }
 
-.sendmessage {
-    grid-area: sendmessage;
-}
+.dialogs__messagesBox {
+    flex-basis: 75%;
 
+}
 

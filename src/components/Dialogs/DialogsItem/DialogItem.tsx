@@ -1,6 +1,7 @@
-import classes from './DialogsItem.module.css'
+import styles from './DialogsItem.module.scss'
 import {NavLink} from 'react-router-dom'
 import React from 'react'
+import dialog from './../../../assets/dialog.jpg'
 
 type Props = {
     id: number
@@ -10,21 +11,19 @@ type Props = {
 const DialogItem: React.FC<Props> = (props) => {
 
     return (
-
-        <div className={classes.dialog}>
-
-            <div className={classes.pic}>
-                <img
-                    className={classes.img}
-                    src={'https://avatars.mds.yandex.net/get-zen_doc/1362956/pub_5bf63a4d77663700aaa65737_5bf63cbcd238aa00aac52f5b/scale_1200'}/>
+        <div className={styles.dialog}>
+            <div className={styles.dialog__avatar}>
+                <img className={styles.img} src={dialog}/>
             </div>
-            <NavLink activeClassName={classes.activ} className={classes.link} to={`/dialogs/${props.id}`}> {props.name}
-                <div className={classes.lastmessage}>
-                    last message
+            <div className={styles.dialog__content}>
+                <NavLink activeClassName={styles.active} to={`/dialogs/${props.id}`}>
+                    {props.name}
+                </NavLink>
+                <div className={styles.lastMessage}>
+                    Last message
                 </div>
-            </NavLink>
+            </div>
         </div>
-
     )
 }
 export default DialogItem

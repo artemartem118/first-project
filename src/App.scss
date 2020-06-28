@@ -1,0 +1,27 @@
+.wrapper {
+    padding: 0 20px;
+
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+
+}
+.app {
+    padding-top: 20px;
+    display: flex;
+
+    &__nav {
+        flex-basis: 20%;
+
+    }
+    &__content {
+        flex-basis: 80%;
+
+    }
+}
+
+
+
+
+

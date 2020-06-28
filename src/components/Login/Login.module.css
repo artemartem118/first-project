@@ -3,69 +3,81 @@
     margin-left: 35px;
 
 }
+
 .wrapperInput {
     margin-bottom: 5px;
     position: relative;
-   	width: 250px;
+    width: 250px;
 
 }
+
 .error {
-	position: absolute;
+    position: absolute;
     color: red;
     margin: 5px 0;
     top: 5px;
     right: -160px;
 
 }
+
 .inputLogin {
-	border: none;
-	padding: 10px;
-	margin: 0 0 5px 0;
+    border: none;
+    padding: 10px;
+    margin: 0 0 5px 0;
 
 }
+
 .buttonLogin {
-	border: none;
-	padding: 5px 15px 5px 15px;
-	margin: 0;
-	background: white;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    margin: 0;
+    background: white;
 
 }
+
 .buttonLogin:hover {
-	background: #f1f1f1;
+    background: #f1f1f1;
 }
+
 .checkbox {
-	display: none;
+    display: none;
 
 }
-.labelChack {}
+
+.labelChack {
+}
+
 .fakeChack {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border: colid 1px black;
-	position: relative;
-	background-color: #E16FCC;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    position: relative;
+    background-color: #E16FCC;
 
 }
+
 .fakeChack::before {
-	content: "";
-	position: absolute;
-	display: block;
-	width: 10px;
-	height: 10px;
-	background-color: #f0fff0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	opacity: 0;
-	transition: 0.2s;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #f0fff0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.2s;
 
 }
+
 .checkbox:checked + .fakeChack::before {
-	opacity: 1;
+    opacity: 1;
 
 }
+
 .textLabel {
-	display: inline-block;
-	padding: 5px 0  5px  5px;
+    display: inline-block;
+    padding: 5px 0 5px 5px;
 }

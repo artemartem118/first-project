@@ -1,0 +1,17 @@
+.nav {
+    background-color: #fff;
+    padding: 5px;
+}
+
+.nav__item {
+    padding: 5px 10px;
+    
+    a {
+        font-family: 'Oxygen', 'serif';
+        color: #1F2326;
+    }
+    
+    .active {
+        color: #FF4656;
+    }
+}
