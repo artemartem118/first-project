@@ -1,6 +1,7 @@
 import React from 'react'
 import {UserProfileType} from '../../../types/types'
 import {useForm} from 'react-hook-form'
+import Button from '../../Common/Button/Button'
 
 type FormData = UserProfileType
 
@@ -43,18 +44,12 @@ const ProfileDataForm: React.FC<LoginFormOwnProps> = ({profile, onSubmit}) => {
                                                                      })}/>
                 {errors.lookingForAJobDescription && <p>{errors.lookingForAJobDescription.message}</p>}
             </div>
-
             <div><b>Contacts:</b> {profile && Object.keys(profile.contacts).map(key => (
-
                 <div key={key}>
                     <b>{key}</b> <input name={'contacts.' + key} placeholder={key} type="text"
                                         ref={register({maxLength: {value: 20, message: 'Exceeded the limit'}})}/>
                 </div>))} </div>
-
-            {/*{props.ifOwner && <button onClick={props.editModeOn}> edit</button>}*/}
-            <button onClick={() => {
-            }}> save
-            </button>
+            <Button name={'Save'}/>
         </form>
     )
 }

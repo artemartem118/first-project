@@ -1,0 +1,14 @@
+.button {
+    background-color: #1F2326;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    font-family: 'Oxygen', 'serif';
+    font-size: 18px;
+    
+    &:hover {
+        background-color: #505155;
+        
+    }
+}
+

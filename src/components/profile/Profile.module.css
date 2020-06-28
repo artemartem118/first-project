@@ -1,7 +1,0 @@
-.profileWrapper {
-    min-height: 500px;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: 'profileInfoWrapper  posts';
-}

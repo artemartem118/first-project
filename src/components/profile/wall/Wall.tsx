@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Wall.module.css'
+import styles from './Wall.module.css'
 import Post from './Post/Post'
 import Send from './Send/Send'
 import {PostDataType} from '../../../types/types'
@@ -15,11 +15,11 @@ const Wall: React.FC<Props> = ({postsData, addPost}) => {
         .map((p) => <Post counterLike={p.counterLike} message={p.message} key={p.id}/>)
 
     return (
-        <div className={classes.posts}>
-            <Send
-                addPost={addPost}
-            />
-            <div>
+        <div className={styles.posts}>
+            <div className={styles.posts__postForm}>
+                <Send addPost={addPost}/>
+            </div>
+            <div className={styles.posts__element}>
                 {postsElement}
             </div>
         </div>

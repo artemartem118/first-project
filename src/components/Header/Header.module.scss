@@ -1,7 +1,8 @@
 .header {
     background-color: #1F2326;
     height: 100%;
-    padding: 10px 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .headerWrapper {
@@ -52,20 +53,9 @@
 .of__name {
     font-size: 25px;
     font-family: 'Oxygen', 'serif';
+    margin-right: 10px;
 }
-
 .of__button {
-    background-color: #1F2326;
+    display: inline-block;
     border: solid 1px #fff;
-    margin: 0 0 0 10px;
-    padding: 5px 10px;
-    color: #fff;
-    font-family: 'Oxygen', 'serif';
-    font-size: 20px;
-    
-    &:hover {
-        background-color: #505155;
-        
-    }
 }
-

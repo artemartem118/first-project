@@ -1,5 +1,7 @@
 import React from 'react'
-import classes from './Post.module.css'
+import styles from './Post.module.scss'
+import myGirlfriend from '../../../../assets/myGirlfriend.jpg'
+import cn from 'classnames'
 
 type Props = {
     message: string
@@ -8,13 +10,15 @@ type Props = {
 
 const Post: React.FC<Props> = React.memo((props) => {
     return (
-        <div className={classes.post}>
-            <div className={classes.text}>
-                <div className={classes.message}>{props.message}</div>
-                <div className={classes.like}>like {props.counterLike}</div>
+        <div className={styles.post}>
+            <div className={styles.post__img}>
+                <img className={styles.img}
+                     src={myGirlfriend} alt={'my girlfriend'}/>
             </div>
-            <img className={classes.img}
-                 src='https://avatars.mds.yandex.net/get-pdb/214908/5cf679dc-d4ef-43f0-88be-9b2a7fda87d5/s1200?webp=false'/>
+            <div className={cn(styles.post__content, styles.content)}>
+                <div className={styles.content__message}>{props.message}</div>
+                <div className={styles.content__like}>like {props.counterLike}</div>
+            </div>
         </div>
     )
 })

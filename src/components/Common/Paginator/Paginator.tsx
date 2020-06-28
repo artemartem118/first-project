@@ -1,6 +1,7 @@
-import classes from './Paginator.module.css'
+import styles from './Paginator.module.scss'
 import React, {useState} from 'react'
 import cn from 'classnames'
+import Button from '../Button/Button'
 
 type Props = {
     portionSize?: number
@@ -25,20 +26,24 @@ const Paginator: React.FC<Props> = ({portionSize = 5, totalItems, pageSize, curr
     const rightPortionPageNumber = portionNumber * portionSize
 
 
-    return <div className={classes.wrapperPaginator}>
-        {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>PREV</button>}
-        {
-            pages
-                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                .map(p => {
-                    return <span key={p} className={cn({
-                        [classes.activePage]: currentPage === p
-                    })} onClick={() => {
-                        onPageClick(p)
-                    }}>{p}</span>
-                })
-        }
-        {portionCount > portionNumber && <button onClick={() => setPortionNumber(portionNumber + 1)}>PREV</button>}
+    return <div className={styles.paginator}>
+        {portionNumber > 1 && <Button handleClick={() => setPortionNumber(portionNumber - 1)} name={'Prev'}/>}
+        <div className={styles.pageWrapper}>
+            {
+                pages
+                    .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+                    .map(p => {
+                        return <span key={p} className={cn({
+                            [styles.activePage]: currentPage === p
+                        }, styles.paginator__page)} onClick={() => {
+                            onPageClick(p)
+                        }}>{p}</span>
+                    })
+            }
+        </div>
+
+        {portionCount > portionNumber &&
+        <Button handleClick={() => setPortionNumber(portionNumber + 1)} name={'Next'}/>}
     </div>
 }
 export default Paginator

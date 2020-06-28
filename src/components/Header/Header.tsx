@@ -1,8 +1,10 @@
 import React from 'react'
-import classes from './Header.module.scss'
+import styles from './Header.module.scss'
 import {NavLink} from 'react-router-dom'
 import {InitialStateAuth} from '../../redux/auth-reducer'
 import cn from 'classnames'
+import Button from '../Common/Button/Button'
+import logo from '../../assets/logo.png'
 
 type Props = {
     auth: InitialStateAuth
@@ -11,20 +13,25 @@ type Props = {
 
 const Header: React.FC<Props> = (props) => {
     return (
-        <header className={cn(classes.header, 'wrapper')}>
+        <header className={cn(styles.header, 'wrapper')}>
             <div className="container">
-                <div className={classes.headerWrapper}>
-                    <div className={classes.header__logo}>
-                        <img className={classes.img}
-                             src={'https://cdn0.iconfinder.com/data/icons/glyphie-1/40/drum_instrument_music_rock-512.png'}/>
+                <div className={styles.headerWrapper}>
+                    <div className={styles.header__logo}>
+                        <img className={styles.img}
+                             src={logo} alt={'logo'}/>
                     </div>
-                    <div className={classes.header__title}><span>Вне такта</span></div>
-                    <div className={cn(classes.header__login, classes.login)}>
+                    <div className={styles.header__title}><span>Vnetakta</span></div>
+                    <div className={cn(styles.header__login, styles.login)}>
                         {props.auth.isAuth ?
-                            <div className={cn(classes.login__of, classes.of) }><span className={classes.of__name}>{props.auth.login}</span>
-                                <button className={classes.of__button} onClick={props.logout}>Log uot</button>
+                            <div className={cn(styles.login__of, styles.of)}>
+                                <span className={styles.of__name}>
+                                    {props.auth.login}
+                                </span>
+                                <div className={styles.of__button}>
+                                    <Button name={'Log uot'} handleClick={props.logout}/>
+                                </div>
                             </div>
-                            : <div className={classes.login__on}>
+                            : <div className={styles.login__on}>
                                 <NavLink to={'/login'}>Login</NavLink>
                             </div>}
                     </div>

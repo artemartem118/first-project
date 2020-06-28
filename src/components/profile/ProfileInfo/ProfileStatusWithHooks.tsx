@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import classes from './ProfileInfo.module.css'
+import classes from './ProfileInfo.module.scss'
 import {ThunkActionProfileType} from '../../../redux/profilePage-reducer'
 
 type Props = {

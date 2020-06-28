@@ -1,0 +1,13 @@
+.profile {
+    display: flex;
+    background-color: #FF4656;
+    padding: 5px;
+    
+    &__info {
+        flex-basis: 40%;
+    }
+    
+    &__wall {
+        flex-basis: 60%;
+    }
+}

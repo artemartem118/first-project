@@ -1,0 +1,37 @@
+
+
+.profileInfo__picture {
+    width: 250px;
+    height: 250px;
+}
+
+.profileInfo__img {
+    width: 100%;
+}
+
+.description {
+    &__status,
+    &__about {
+        font-family: 'Oxygen', 'serif';
+    }
+    
+    &__status {
+        padding-top: 5px;
+        margin-right: 5px;
+    }
+    
+    &__about {
+        padding-top: 5px;
+    }
+}
+
+.profileData {
+    &__btn {
+        padding-top: 5px;
+    }
+}
+
+/*  only status  */
+.status {
+    cursor: pointer;
+}

@@ -1,0 +1,46 @@
+.post {
+    margin: 5px 0;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: #1F2326;
+    
+    &__content {
+        font-family: 'Oxygen', 'serif';
+        color: #f1f1f1;
+        font-size: 18px;
+    }
+    
+    &__img {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 10px;
+    
+    &__message {
+    
+    }
+    
+    &__like {
+        align-self: flex-end;
+    }
+}
+
+.img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+}

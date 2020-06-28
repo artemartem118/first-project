@@ -1,11 +1,17 @@
-.messageForm {
+.postForm {
     display: flex;
     flex-direction: column;
+    
+    &__text {
+        height: 60px;
+    }
+    
+    &__btn {
+        padding-top: 5px;
+        align-self: flex-end;
+    }
 }
 
-.btnWrapper {
-    align-self: flex-end;
-}
 .error {
     padding-right: 10px;
     font-family: 'Oxygen', 'serif';

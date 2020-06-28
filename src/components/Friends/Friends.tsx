@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Friends.module.css'
+import styles from './Friends.module.scss'
 import Paginator from '../Common/Paginator/Paginator'
 import Friend from './Friend'
 import Preloader from '../Common/Preloader/Preloader'
@@ -20,16 +20,20 @@ type Props = {
 
 const Friends: React.FC<Props> = ({totalUsers, pageSize, currentPage, onPageClick, isFetching, users, unfollow, follow, followingInProgress}) => {
     return (
-        <div className={classes.wrapperUsers}>
-            <Paginator totalItems={totalUsers} pageSize={pageSize} currentPage={currentPage}
-                       onPageClick={onPageClick}/>
-            {isFetching ? <Preloader/> :
-                users.map(user => <Friend unfollow={unfollow}
-                                          follow={follow}
-                                          followingInProgress={followingInProgress}
-                                          user={user}
-                                          key={user.id}/>)
-            }
+        <div className={styles.users}>
+            <div className={styles.users__paginator}>
+                <Paginator totalItems={totalUsers} pageSize={pageSize} currentPage={currentPage}
+                           onPageClick={onPageClick}/>
+            </div>
+            <div className={styles.users__items}>
+                {isFetching ? <Preloader/> :
+                    users.map(user => <Friend unfollow={unfollow}
+                                              follow={follow}
+                                              followingInProgress={followingInProgress}
+                                              user={user}
+                                              key={user.id}/>)
+                }
+            </div>
         </div>
     )
 }

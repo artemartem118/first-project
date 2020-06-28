@@ -1,0 +1,51 @@
+/* -- common -- */
+
+.img {
+    width: 100%;
+}
+
+/* -- users -- */
+
+.users {
+    background-color: #FF4656;
+    
+    &__items {
+    
+    }
+    
+    &__paginator {
+    }
+}
+
+/* -- user -- */
+
+.user {
+    display: flex;
+    margin: 10px 5px;
+    
+    &__avaToggleName {
+        flex-basis: 20%;
+    }
+    
+    &__status {
+        flex-basis: 80%;
+        font-family: 'Oxygen', 'serif';
+        color: #1F2326;
+        font-size: 18px;
+    }
+}
+
+.avaToggleName {
+    
+    &__ava {
+        width: 100px;
+        height: 100px;
+    }
+    &__name {
+        text-overflow: ellipsis;
+        font-family: 'Oxygen', 'serif';
+        font-size: 18px;
+        padding: 3px 0;
+    }
+ 
+}

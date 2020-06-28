@@ -1,8 +1,10 @@
 import React from 'react'
-import classes from './Friends.module.css'
+import styles from './Friends.module.scss'
 import {NavLink} from 'react-router-dom'
 import withPhoto from './../../assets/unnamed.jpg'
 import {UserType} from '../../types/types'
+import Button from '../Common/Button/Button'
+import cn from 'classnames'
 
 type Props = {
     user: UserType
@@ -13,32 +15,32 @@ type Props = {
 
 const Friend = ({user, ...props}: Props) => {
     return (
-        <div className={classes.wrapperUser}>
-            <div className={classes.wrapperAVA}>
-                <div className={classes.ava}>
+        <div className={styles.user}>
+            <div className={cn(styles.user__avaToggleName, styles.avaToggleName)}>
+                <div className={styles.avaToggleName__ava}>
                     <NavLink to={`/profile/${user.id}`}>
-                        <img className={classes.img} src={user.photos.small || withPhoto}/>
+                        <img className={styles.img} src={user.photos.small || withPhoto} alt={'user photo'}/>
                     </NavLink>
-                    <div>{user.name}</div>
                 </div>
-                {
-                    user.followed
-                        ? <button
-                            className={classes.btnFriend}
-                            disabled={props.followingInProgress.some(id => id === user.id)}
-                            onClick={() => {
-                                props.unfollow(user.id)
-                            }}>UNFOLLOW</button>
-                        : <button
-                            className={classes.btnFriend}
-                            disabled={props.followingInProgress.some(id => id === user.id)}
-                            onClick={() => {
-                                props.follow(user.id)
-                            }}>FOLLOW</button>
-                }
+                <div className={styles.avaToggleName__name}>{user.name}</div>
+                <div className={styles.avaToggleName__toggle}>
+                    {
+                        user.followed
+                            ?
+                            <Button forDisabled={props.followingInProgress.some(id => id === user.id)}
+                                    handleClick={() => {
+                                        props.unfollow(user.id)
+                                    }} name={'Unfollw'}/>
+                            :
+                            <Button forDisabled={props.followingInProgress.some(id => id === user.id)}
+                                    handleClick={() => {
+                                        props.follow(user.id)
+                                    }} name={'Follow'}/>
+                    }
+                </div>
             </div>
-            <div className={classes.wrapperDiscription}>
-                <div className={classes.status}><b>Status:</b> {user.status}</div>
+            <div className={styles.user__status}>
+                <div className={styles.status}><b>Status: </b>{user.status}</div>
             </div>
         </div>
     )

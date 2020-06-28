@@ -1,0 +1,19 @@
+.paginator {
+    
+    &__page {
+        cursor: pointer;
+        font-family: 'Oxygen', 'serif';
+        font-size: 18px;
+        margin-right: 5px;
+        border-bottom: solid 1px #1F2326;
+    }
+}
+
+.pageWrapper {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.activePage {
+    color: #fff64b
+}

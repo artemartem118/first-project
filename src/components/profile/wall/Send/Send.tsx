@@ -1,6 +1,8 @@
 import React from 'react'
-import classes from './Send.module.css'
+import styles from './Send.module.scss'
 import {useForm} from 'react-hook-form'
+import Textarea from '../../../Common/Textarea/Textarea'
+import Button from '../../../Common/Button/Button'
 
 type PropsSendPost = {
     onSubmit: (data: LoginFormValues, e: any) => void
@@ -13,14 +15,17 @@ const SendPost: React.FC<PropsSendPost> = ({onSubmit}) => {
     const required = 'This fields is required'
 
     return (
+
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={classes.text}>
-                <textarea name='messageText' placeholder={'New post'}
-                          ref={register({required, maxLength: {value: 20, message: 'Exceeded the limit'}})}/>
-                {errors.messageText && <div className={classes.error}>{errors.messageText.message}</div>}
-            </div>
-            <div className={classes.btnEnd}>
-                <button className={classes.btn}>Add post</button>
+            <div className={styles.postForm}>
+                <div className={styles.postForm__text}>
+                    <Textarea name={'messageText'} placeholder={'New post'}
+                              register={register({required, maxLength: {value: 20, message: 'Exceeded the limit'}})}/>
+                </div>
+                <div className={styles.postForm__btn}>
+                    {errors.messageText && <span className={styles.error}>{errors.messageText.message}</span>}
+                    <Button name={'Add post'}/>
+                </div>
             </div>
         </form>
     )
@@ -29,24 +34,18 @@ const SendPost: React.FC<PropsSendPost> = ({onSubmit}) => {
 type PropsSend = {
     addPost: (newPost: string) => void
 }
+
 type LoginFormValues = {
     messageText: string
 }
 
 const Send: React.FC<PropsSend> = (props) => {
 
-    const {reset} = useForm()
-
     const addNewPost = (data: LoginFormValues, e: any) => {
         e.target.reset()
         props.addPost(data.messageText)
     }
 
-    return (
-        <div className={classes.addPostsWrapper}>
-
-            <SendPost onSubmit={addNewPost}/>
-        </div>
-    )
+    return <SendPost onSubmit={addNewPost}/>
 }
 export default Send

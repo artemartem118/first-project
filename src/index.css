@@ -5,18 +5,23 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
 }
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-
 }
+
 * {
     box-sizing: border-box;
-
 }
+
 a {
     text-decoration: none;
+}
 
+button,
+input,
+textarea {
+    outline: none;
 }

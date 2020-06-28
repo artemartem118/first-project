@@ -1,4 +1,4 @@
-import classes from './Message.module.css'
+import classes from './Message.module.scss'
 import React from 'react'
 
 type Props = {
@@ -8,7 +8,9 @@ type Props = {
 const Message: React.FC<Props> = (props) => {
 
     return (
-        <div className={classes.message}>{props.message}</div>
+        <div className={classes.message}>
+            {props.message}
+        </div>
     )
 }
 export default Message

@@ -26,12 +26,12 @@ const Dialogs = (props: Props) => {
                 }
             </div>
             <div className={styles.dialogs__messagesBox}>
-                <div>
+                <div className={styles.messages}>
                     {
                         messagesElement
                     }
                 </div>
-                <div>
+                <div className={styles.sendMessages}>
                     <SendMessage
                         addMessage={props.addMessage}/>
                 </div>

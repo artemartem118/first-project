@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Profile.module.css'
+import styles from './Profile.module.scss'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import WallContainer from './wall/WallContainer'
 import {UserProfileType} from '../../types/types'
@@ -24,16 +24,20 @@ const Profile: React.FC<Props> = (props) => {
     }
 
     return (
-        <div className={classes.profileWrapper}>
-            <ProfileInfo saveProfile={props.saveProfile}
-                         ifOwner={props.ifOwner}
-                         savePhoto={props.savePhoto}
-                         userProfile={props.userProfile}
-                         status={props.status}
-                         updateStatusUser={props.updateStatusUser}
-            />
-            {/*@ts-ignore*/}
-            <WallContainer/>
+        <div className={styles.profile}>
+            <div className={styles.profile__info}>
+                <ProfileInfo saveProfile={props.saveProfile}
+                             ifOwner={props.ifOwner}
+                             savePhoto={props.savePhoto}
+                             userProfile={props.userProfile}
+                             status={props.status}
+                             updateStatusUser={props.updateStatusUser}
+                />
+            </div>
+            <div className={styles.profile__wall}>
+                {/*@ts-ignore*/}
+                <WallContainer/>
+            </div>
         </div>
     )
 }
